@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adding yourself to the team page | ACM Teach LA</title>
+  <link rel="icon" href="/img/teachLA_logo_light.png" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/solid.js" integrity="sha384-4RG3cEPIlCBy6VNzxM9ZoEwZW+65ed5JDOfaJAnQqwV6ha/jZDJTXjFmvjFM4bk4" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/brands.js" integrity="sha384-V7gsTxvUZaeC6NAsCa24o3WvPOXwSsUM8/SBgy+fxlzWL3xEGXHsAv2E3UO5zKcZ" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/fontawesome.js" integrity="sha384-DNo9bmYZCHLtp0n0l0XA2UsoRHX1nx38aRP+p9yoP5A8kVTfeWG3aySMOq5FD/v3" crossorigin="anonymous"></script>
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Adding yourself to the team page" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Table of Contents" />
+<meta property="og:description" content="Table of Contents" />
+<link rel="canonical" href="https://teachla.uclaacm.com/docs/static-setup" />
+<meta property="og:url" content="https://teachla.uclaacm.com/docs/static-setup" />
+<meta property="og:site_name" content="ACM Teach LA" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-10-31T03:05:46+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Adding yourself to the team page" />
+<script type="application/ld+json">
+{"description":"Table of Contents","url":"https://teachla.uclaacm.com/docs/static-setup","@type":"BlogPosting","headline":"Adding yourself to the team page","dateModified":"2020-10-31T03:05:46+00:00","datePublished":"2020-10-31T03:05:46+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://teachla.uclaacm.com/docs/static-setup"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+<body><div id="navbar">
+  <div id="navbar-inner">
+    <a href="/docs/">
+      <div id="nav-title" class="nav-section left">
+        <img src="/img/teachLA_wordmark_light.svg" id="acm-tla-wordmark" alt="ACM Teach LA Wordmark" />
+      </div>
+    </a>
+    <div class="nav-section right" id="desktop-nav">
+      <ul class="nav-items">
+        <li class="nav-button"><a href="/">back to site</a></li>
+      </ul>
+    </div>
+    <div class="nav-section right" id="mobile-nav">
+      <label for="menu-toggle">
+        <span class="hamburger-icon">
+          <span class="bar" id="top-bar"></span>
+          <span class="bar" id="middle-bar"></span>
+          <span class="bar" id="bottom-bar"></span>
+        </span>
+      </label>
+      <input type="checkbox" id="menu-toggle" />
+      <div id="hamburger-menu">
+        <ul class="nav-items">
+          <li class="nav-button"><a href="/">back to site</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+      function logTopSecretMessage(message){
+        console.log(
+          `%c${message}`,
+          "color:#A1D900;"
+        )
+      }
+
+      logTopSecretMessage("Hey! You there! Yes, you, the person going through our JS logs.");
+      logTopSecretMessage("Don't worry, our site isn't collecting any data about you, or anything, really. Pinky promise.");
+      logTopSecretMessage("You look like somebody who likes web programming and hacking. Why not join our dev team? Check out https://teachla.uclaacm.com/dev");
+    </script>
+    <div class="container container-fill
+      container-restricted
+      generated-content
+    ">
+      <h2 id="table-of-contents">Table of Contents</h2>
+
+<ul>
+  <li><a href="#get-ready">Get ready</a></li>
+  <li><a href="#creating-a-basic-page">Creating a basic page</a></li>
+  <li><a href="#making-the-page-your-own">Making the page your own</a></li>
+  <li><a href="#add-commit-and-push">Add, Commit, and Push</a></li>
+  <li><a href="#making-a-pull-request">Making a Pull Request</a></li>
+  <li><a href="#code-review">Code Review</a></li>
+  <li><a href="#merging">Merging!</a></li>
+</ul>
+
+<h2 id="get-ready">Get ready</h2>
+
+<p>Before we get started, we highly encourage that you follow along with our <a href="/docs/dev-setup">dev setup guide</a> to get a working development environment set up. From here, there’s just a few commands that we’ll need to execute in sequence to get things rolling. This should be review:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git checkout <span class="nt">-b</span> my-branch-name    <span class="c"># create a new branch and check it out</span>
+<span class="nv">$ </span>jekyll serve                      <span class="c"># set up our dev server</span>
+</code></pre></div></div>
+
+<h2 id="creating-a-basic-page">Creating a basic page</h2>
+
+<p>Now to add yourself to our <a href="/team">team page</a>! When you add yourself to our team, you are not only adding your name to the team page, but you are also creating your own webpage on the website, and associating yourself to any future blog posts that you might write!</p>
+
+<p>All our team documents are stored within the <code class="language-plaintext highlighter-rouge">_team</code> folder from the top level of the website. To create your own, just use the first initial of your name followed by your last name. If you’re familiar with Jekyll, you can use a variety of file types here so long as you include our headmatter, but for our demo, we will use <code class="language-plaintext highlighter-rouge">.md</code>. So, for our example member “Joe Bruin”, we would create the file <code class="language-plaintext highlighter-rouge">_team/jbruin.md</code>!</p>
+
+<p>The contents of the file are important. To start, we add what is called <strong>head matter</strong>, or just the important information about our member. It is encapsulated in three dashes <code class="language-plaintext highlighter-rouge">---</code> and should have the following fields at a <strong>minimum</strong>:</p>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">firstname</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Joe"</span>
+<span class="na">lastname</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Bruin"</span>
+<span class="na">group</span><span class="pi">:</span> <span class="s2">"</span><span class="s">member"</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<p>If we refresh the team page in our web browser, now, we should see that our name is now in the group we provided, and clicking on our image navigates to a barebones team page. We have four groups for team members: <code class="language-plaintext highlighter-rouge">member</code>, <code class="language-plaintext highlighter-rouge">alum</code>, <code class="language-plaintext highlighter-rouge">alum+</code>, and <code class="language-plaintext highlighter-rouge">board</code>. If you’re going through this process for the first time, then you should probably use <code class="language-plaintext highlighter-rouge">member</code>.</p>
+
+<p>The full list of fields can be found in our <a href="https://github.com/uclaacm/teach-la-website/blob/master/_team/README.md">team README</a>.</p>
+
+<h2 id="making-the-page-your-own">Making the page your own</h2>
+
+<p>What comes after the head matter? Why, the content! After those last three dashes, you are free to write whatever you’d like in <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown formatting</a> to have it generate your user page, which you can reach by either clicking on your profile image on the team page, or by clicking on your name on a blog post you authored.</p>
+
+<p>Here’s an example team page for Josie Bruin:</p>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">firstname</span><span class="pi">:</span> <span class="s">Josie</span>
+<span class="na">lastname</span><span class="pi">:</span> <span class="s">Bruin</span>
+<span class="na">group</span><span class="pi">:</span> <span class="s">alum+</span>
+<span class="na">graduating_year</span><span class="pi">:</span> <span class="m">1923</span>
+<span class="na">img</span><span class="pi">:</span> <span class="s">josiebruin.png</span>
+
+<span class="na">github</span><span class="pi">:</span> <span class="s">uclaacm</span>
+<span class="na">email</span><span class="pi">:</span> <span class="s">josie@ucla.edu</span>
+
+<span class="na">links</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">My personal website</span>
+    <span class="na">href</span><span class="pi">:</span> <span class="s">https://ucla.edu</span>
+<span class="nn">---</span>
+
+<span class="gu">## Hello, I am Josie Bruin.</span>
+
+I worked with Teach LA for every year of my college experience, and it was phenomenal!
+
+<span class="gu">## My Favorite Classes at UCLA</span>
+<span class="p">*</span> COM SCI 31, 32, and 33
+<span class="p">*</span> COM SCI 199
+</code></pre></div></div>
+
+<p>This renders into a clean page:</p>
+
+<p><img src="/img/docs/sample_team.png" alt="josie bruin's team page" /></p>
+
+<h2 id="add-commit-and-push">Add, Commit, and Push</h2>
+
+<p>Now, you are ready to add your files to the stage, commit, and push as discussed in <a href="/docs/dev-setup">our setup guide</a>.</p>
+
+<p>If the push step complains of not being able to find a remote, then you should use the long form of the push command:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git push origin my-branch-name
+</code></pre></div></div>
+
+<p>All this does is create the branch if it doesn’t already.</p>
+
+<p>Once you’ve pushed, your changes will be reflected on GitHub. We’re now ready to create a <strong>pull request</strong>!</p>
+
+<h2 id="making-a-pull-request">Making a Pull Request</h2>
+
+<p>Now that you’ve pushed some code to the repository, you can submit what’s called a <strong>pull request</strong>, or a request to merge your changes on one branch into another. GitHub makes this very easy, so let’s navigate to our <a href="https://github.com/uclaacm/teach-la-website">repository’s GitHub page</a>. If we’re fast enough, we’ll see a notification stating that our branch was recently pushed, along with a suggestion to make a pull request from it.</p>
+
+<p>Go ahead and click on “create a pull request” to proceed, and you’ll be presented a form to write a title for your pull request, along with a description of the finer details. If we’re adding this page, then we might title it <a href="https://github.com/uclaacm/teach-la-website/pull/68">“Implement Internal Docs Collection”</a>. For the description, we might describe the files added and any modifications to existing code.</p>
+
+<p>Once your pull request is submitted, you’ll notice that you can’t immediately merge it (i.e., have your changes added to the source code). This is because we enforce a mandatory code review from a maintainer prior to merging. Code review is an essential part of development. What it means is that someone who owns or manages the repository looks over your changes to make sure that nothing breaks, everything works as expected, and that - in some cases - your coding style is up to the project’s standards.</p>
+
+<h2 id="code-review">Code Review</h2>
+
+<p>To request review from a project maintainer, simply click on the “review” sidebar on your newly-created pull request.</p>
+
+<p><img src="/img/docs/dev-setup-reviewers.png" alt="selecting a reviewer for the pull request" /></p>
+
+<p>From here, we can request the review of project maintainers or fellow peers. You’ll get a notification on GitHub after a the reviewer you requested publishes their response.</p>
+
+<p>A code review will appear on your pull request on GitHub as a comment, with specific comments on parts of your code. A review can either approve (ready to merge), deny (needs some changes before it is ready), or remain neutral (often an interim review) on your changes. This gives way to collaborative, iterative development.</p>
+
+<h2 id="merging">Merging!</h2>
+
+<p>Once the review process is complete and your pull request is approved, you will have the option to “merge pull request” at the bottom of the conversation thread! Once you do this, your changes will be reflected on the <code class="language-plaintext highlighter-rouge">master</code> branch, and you will be added to the team page on our <a href="https://teachla.uclaacm.com">live website</a>! Congratulations on your first PR!</p>
+
+      
+    </div><footer class="footer">
+    <div class="container container-restricted">
+        <div class="footer-row">
+            <div class="footer-fullheight-col">
+                <div>
+                    <h2 class="footer-title">ACM Teach LA</h2>
+                    <ul class="footer-nav">
+                        <li>
+                            <a href="mailto:acmteachla@gmail.com">
+                                <span class="fa fa-fw fa-envelope"></span> acmteachla@gmail.com
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/acmteachla/" target="_blank" rel="noopener noreferrer">
+                                <span class="fab fa-fw fa-facebook"></span> ACM Teach LA
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/uclaacm" target="_blank" rel="noopener noreferrer">
+                                <span class="fab fa-fw fa-github"></span> uclaacm
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/company/acm-teach-la-acm-ucla" target="_blank" rel="noopener noreferrer">
+                                <span class="fab fa-fw fa-linkedin"></span> ACM Teach LA
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <a class="footer-link" href="https://www.netlify.com" target="_blank" rel="noopener noreferrer">
+                    <img src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Deploys by Netlify" />
+                </a>
+            </div>
+            <div>
+                <h3 class="footer-subtitle">what we do</h3>
+                <ul class="footer-nav">
+                    <li>
+                        <a href="/classes">classes</a>
+                    </li>
+                    <li>
+                        <a href="/dev">dev</a>
+                    </li>
+                    <li>
+                        <a href="https://editor.uclaacm.com" target="_blank" rel="noopener noreferrer">editor</a>
+                    </li>
+                    <li>
+                        <a href="/resources">resources</a>
+                    </li>
+                </ul>
+                <h3 class="footer-subtitle">events</h3>
+                <ul class="footer-nav text-1x">
+                    <li>
+                        <a href="/citylab-cyber">Cyber Day with CityLab</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="text-desktop-right">
+                <h3 class="footer-subtitle">
+                    who we are
+                </h3>
+                <ul class="footer-nav">
+                    <li>
+                        <a href="/about">about</a>
+                    </li>
+                    <li>
+                        <a href="/blog">blog</a>
+                    </li>
+                    <li>
+                        <a href="/reports">reports</a>
+                    </li>
+                    <li>
+                        <a href="/team">team</a>
+                    </li>
+                </ul>
+                <h3 class="footer-subtitle">
+                    internal
+                </h3>
+                <ul class="footer-nav">
+                    <li>
+                        <a href="/docs">docs</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <p class="text-center">
+            &copy; ACM @ UCLA 2019-* // made with <span class="fa fa-heart animated-heartbeat" style="color:tomato" aria-label="animated heartbeat"></span> and <a class="footer-link" href="https://github.com/uclaacm/teach-la-website" target="_blank" rel="noopener noreferrer"><span class="fab fa-github" aria-label="GitHub Logo & Repository"></span></a>
+            <br>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

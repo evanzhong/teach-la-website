@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dev & Software at Teach LA | ACM Teach LA</title>
+  <link rel="icon" href="/img/teachLA_logo_light.png" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/solid.js" integrity="sha384-4RG3cEPIlCBy6VNzxM9ZoEwZW+65ed5JDOfaJAnQqwV6ha/jZDJTXjFmvjFM4bk4" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/brands.js" integrity="sha384-V7gsTxvUZaeC6NAsCa24o3WvPOXwSsUM8/SBgy+fxlzWL3xEGXHsAv2E3UO5zKcZ" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/fontawesome.js" integrity="sha384-DNo9bmYZCHLtp0n0l0XA2UsoRHX1nx38aRP+p9yoP5A8kVTfeWG3aySMOq5FD/v3" crossorigin="anonymous"></script>
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Dev &amp; Software at Teach LA" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="ACM Teach LA is an non-profit outreach organization at UCLA dedicated to providing equal access to computer science education for all students in Los Angeles." />
+<meta property="og:description" content="ACM Teach LA is an non-profit outreach organization at UCLA dedicated to providing equal access to computer science education for all students in Los Angeles." />
+<link rel="canonical" href="https://teachla.uclaacm.com/dev" />
+<meta property="og:url" content="https://teachla.uclaacm.com/dev" />
+<meta property="og:site_name" content="ACM Teach LA" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Dev &amp; Software at Teach LA" />
+<script type="application/ld+json">
+{"description":"ACM Teach LA is an non-profit outreach organization at UCLA dedicated to providing equal access to computer science education for all students in Los Angeles.","url":"https://teachla.uclaacm.com/dev","@type":"WebPage","headline":"Dev &amp; Software at Teach LA","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+<body><div id="navbar">
+  <div id="navbar-inner">
+    <a href="/">
+      <div id="nav-title" class="nav-section left">
+        <img src="/img/teachLA_wordmark_light.svg" id="acm-tla-wordmark" alt="ACM Teach LA Wordmark" />
+      </div>
+    </a>
+    <div class="nav-section right" id="desktop-nav">
+      <ul class="nav-items">
+        <li><a href="/about">About</a></li>
+        <li><a href="/classes">Classes</a></li>
+        <li><a href="/dev">Dev</a></li>
+        <li><a href="/team">Team</a></li>
+        <li class="nav-button"><a href="/join">Join Us!</a></li>
+      </ul>
+    </div>
+    <div class="nav-section right" id="mobile-nav">
+      <label for="menu-toggle">
+        <span class="hamburger-icon">
+          <span class="bar" id="top-bar"></span>
+          <span class="bar" id="middle-bar"></span>
+          <span class="bar" id="bottom-bar"></span>
+        </span>
+      </label>
+      <input type="checkbox" id="menu-toggle" />
+      <div id="hamburger-menu">
+        <ul class="nav-items">
+          <li><a href="/about">About</a></li>
+          <li><a href="/classes">Classes</a></li>
+          <li><a href="/dev">Dev</a></li>
+          <li><a href="/team">Team</a></li>
+          <li class="nav-button"><a href="/join">Join Us!</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+      function logTopSecretMessage(message){
+        console.log(
+          `%c${message}`,
+          "color:#A1D900;"
+        )
+      }
+
+      logTopSecretMessage("Hey! You there! Yes, you, the person going through our JS logs.");
+      logTopSecretMessage("Don't worry, our site isn't collecting any data about you, or anything, really. Pinky promise.");
+      logTopSecretMessage("You look like somebody who likes web programming and hacking. Why not join our dev team? Check out https://teachla.uclaacm.com/dev");
+    </script>
+    <div class="container container-fill container-restricted">
+      <h1 class="title page-title">Dev & Software</h1>
+
+<div class="dev-hero">
+    <div class="grid-col">
+        <img class="img-responsive" src="/img/undraw/pair-programming.svg" alt="Man and Woman pair programming at one computer."/>
+    </div>
+    <div class="dev-content">
+        <h2 class="title">About the Dev Team</h2>
+        <p>
+            ACM Teach LA has a vibrant development team focused on using software to democratize access to education. We develop a range of web applications, from tools like <a class="tla-link" href="https://editor.uclaacm.com" target="_blank" rel="noopener noreferrer">our online code editor</a>, to our interactive and narrative-focused learning labs, to this very website!
+        </p>      
+        <p>
+            We're also an organization committed to open-source. Everything we do, from all of our projects to developer training, is available on ACM @ UCLA <a class="tla-link" href="https://github.com/uclaacm" target="_blank" rel="noopener noreferrer">GitHub organization</a>. You can even view <a class="tla-link" href="https://github.com/uclaacm/teach-la-website/blob/master/dev.html" target="_blank" rel="noopener noreferrer">this page on GitHub</a>.
+        </p>
+        <div class="button-container">
+            <a class="button button-dark" href="https://forms.gle/Yu49uA374S6caAmu9">
+                <span class="fa fa-file-alt"></span> Join Us!
+            </a>
+            <a class="button button-dark" href="#projects">
+                <span class="fab fa-github"></span> Our Projects
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="dev-join">
+    <div class="dev-content">
+        <h2 class="title" id="join">Join us!</h2>
+        <p>
+            In parallel, we're a dev team focused on developer training, education, and growth. There's no application, we don't require prior knowledge, and <b>we want to see you succeed.</b>
+        </p>
+        <p>
+            Who are we looking for? The short answer is, lots of people! We care most about people who are passionate about education and technology and want to help teach the world - previous experience or tech skills is a plus, but absolutely not required. Relevant roles include:
+        </p>
+        <ul>
+            <li>
+                Content Developers (no coding required!)
+            </li>
+            <li>
+                Frontend Web Developers
+            </li>
+            <li>
+                Backend Web Developers
+            </li>
+            <li>
+                UI/UX Designers
+            </li>
+            <li>
+                Graphic Designers
+            </li>
+            <li>
+                ... and, <b>your role</b>, even if it's not here
+            </li>
+        </ul>
+        <p>
+            Sound like something you want to do? <a class="tla-link" href="https://forms.gle/Yu49uA374S6caAmu9">Fill out our interest form!</a> Or, if you want more information, you can email our <a class="tla-link" href="/team#krash">our dev team director, Leo</a>. We're excited to see you soon!
+        </p>
+    </div>
+    <div class="grid-col">
+        <img class="img-responsive" src="/img/undraw/team-page.svg" alt="clip art showing diverse group of profile images on webpage" />
+    </div>
+</div>
+
+<h2 class="title page-title text-center" id="projects">Our Projects</h2>
+<div class="dev-projects-grid">
+    
+    <div class="dev-project-card">
+        <div class="dev-project-card-content">
+            <h3 class="title dev-project-title">
+                Editor Frontend
+            </h3>
+            <div class="dev-project-info-row">
+                <span class="dev-project-badge lang-js"></span> javascript •
+                <a class="tla-link" href="https://editor.uclaacm.com"><span class="fa fa-link"></span> project</a>
+                 •
+                <a class="tla-link" href="https://github.com/uclaacm/TeachLAFrontend"><span class="fab fa-github"></span> repo</a>
+            </div>
+            <p>
+                The frontend for our flagship and most mature product, a kid-friendly online IDE that supports Python, Processing, and HTML/CSS/JS. The frontend handles app state management and rendering views.
+            </p>
+            
+            <p>
+                Lead(s): 
+                
+                    <a class="tla-link" href="/team#krash">
+                        Leo
+                    </a>
+                
+            </p>
+            
+        </div>
+
+        <div class="dev-project-tech-container">
+            
+            <span class="dev-project-tech-tag">
+                react
+            </span>
+            
+            <span class="dev-project-tech-tag">
+                redux
+            </span>
+            
+            <span class="dev-project-tech-tag">
+                firebase
+            </span>
+            
+            <span class="dev-project-tech-tag">
+                sass
+            </span>
+            
+            <span class="dev-project-tech-tag">
+                jest & enzyme
+            </span>
+            
+        </div>
+    </div>
+    
+    <div class="dev-project-card">
+        <div class="dev-project-card-content">
+            <h3 class="title dev-project-title">
+                Editor Backend
+            </h3>
+            <div class="dev-project-info-row">
+                <span class="dev-project-badge lang-go"></span> go •
+                <a class="tla-link" href="https://editor.uclaacm.com"><span class="fa fa-link"></span> project</a>
+                 •
+                <a class="tla-link" href="https://github.com/uclaacm/teach-la-go-backend"><span class="fab fa-github"></span> repo</a>
+            </div>
+            <p>
+                The backend for our flagship and most mature product, a kid-friendly online IDE that supports Python, Processing, and HTML/CSS/JS. The backend handles RESTful HTTP requests and complex DB operations.
+            </p>
+            
+            <p>
+                Lead(s): 
+                
+                    <a class="tla-link" href="/team#krash">
+                        Leo
+                    </a>
+                
+            </p>
+            
+        </div>
+
+        <div class="dev-project-tech-container">
+            
+            <span class="dev-project-tech-tag">
+                go
+            </span>
+            
+            <span class="dev-project-tech-tag">
+                firebase
+            </span>
+            
+        </div>
+    </div>
+    
+    <div class="dev-project-card">
+        <div class="dev-project-card-content">
+            <h3 class="title dev-project-title">
+                Passworks
+            </h3>
+            <div class="dev-project-info-row">
+                <span class="dev-project-badge lang-js"></span> javascript •
+                <a class="tla-link" href="https://passworks.uclaacm.com"><span class="fa fa-link"></span> project</a>
+                 •
+                <a class="tla-link" href="https://github.com/uclaacm/passworks"><span class="fab fa-github"></span> repo</a>
+            </div>
+            <p>
+                This interactive learning module teaches kids about different types of password security, and why they're important. It ends with some social engineering and hands-on hacking! A collaboration with ACM Cyber.
+            </p>
+            
+            <p>
+                Lead(s): 
+                
+                    <a class="tla-link" href="/team#jliu">
+                        Jamie
+                    </a>,
+                
+                    <a class="tla-link" href="/team#awang">
+                        Alyssa
+                    </a>
+                
+            </p>
+            
+        </div>
+
+        <div class="dev-project-tech-container">
+            
+            <span class="dev-project-tech-tag">
+                react
+            </span>
+            
+            <span class="dev-project-tech-tag">
+                css
+            </span>
+            
+            <span class="dev-project-tech-tag">
+                material
+            </span>
+            
+        </div>
+    </div>
+    
+    <div class="dev-project-card">
+        <div class="dev-project-card-content">
+            <h3 class="title dev-project-title">
+                Static Website
+            </h3>
+            <div class="dev-project-info-row">
+                <span class="dev-project-badge lang-html"></span> HTML •
+                <a class="tla-link" href="https://teachla.uclaacm.com"><span class="fa fa-link"></span> project</a>
+                 •
+                <a class="tla-link" href="https://github.com/uclaacm/teach-la-website"><span class="fab fa-github"></span> repo</a>
+            </div>
+            <p>
+                This website! Built with love and HTML, CSS/SASS, and Jekyll (a static site generator).
+            </p>
+            
+            <p>
+                Lead(s): 
+                
+                    <a class="tla-link" href="/team#mwang">
+                        Matt
+                    </a>
+                
+            </p>
+            
+        </div>
+
+        <div class="dev-project-tech-container">
+            
+            <span class="dev-project-tech-tag">
+                html
+            </span>
+            
+            <span class="dev-project-tech-tag">
+                sass
+            </span>
+            
+            <span class="dev-project-tech-tag">
+                jekyll
+            </span>
+            
+        </div>
+    </div>
+    
+    <div class="dev-project-card">
+        <div class="dev-project-card-content">
+            <h3 class="title dev-project-title">
+                Getting Mean About Error
+            </h3>
+            <div class="dev-project-info-row">
+                <span class="dev-project-badge lang-js"></span> javascript •
+                <a class="tla-link" href="https://uclaacm.github.io/getting-mean-about-error/"><span class="fa fa-link"></span> project</a>
+                 •
+                <a class="tla-link" href="https://github.com/uclaacm/getting-mean-about-error"><span class="fab fa-github"></span> repo</a>
+            </div>
+            <p>
+                This narrative version of a critical portion of machine learning walks students through the intuition behind Mean-Squared Error, with interactive math and graphs.
+            </p>
+            
+            <p>
+                Lead(s): 
+                
+                    <a class="tla-link" href="/team#mkang">
+                        Miles
+                    </a>,
+                
+                    <a class="tla-link" href="/team#michellez">
+                        Michelle
+                    </a>
+                
+            </p>
+            
+        </div>
+
+        <div class="dev-project-tech-container">
+            
+            <span class="dev-project-tech-tag">
+                function-plot/d3
+            </span>
+            
+            <span class="dev-project-tech-tag">
+                js
+            </span>
+            
+            <span class="dev-project-tech-tag">
+                bulma
+            </span>
+            
+        </div>
+    </div>
+    
+    <div class="dev-project-card">
+        <div class="dev-project-card-content">
+            <h3 class="title dev-project-title">
+                Cipher Salad
+            </h3>
+            <div class="dev-project-info-row">
+                <span class="dev-project-badge lang-js"></span> javascript •
+                <a class="tla-link" href="https://ciphersalad.uclaacm.com/"><span class="fa fa-link"></span> project</a>
+                 •
+                <a class="tla-link" href="https://github.com/uclaacm/cipher-salad"><span class="fab fa-github"></span> repo</a>
+            </div>
+            <p>
+                In a collaboration with ACM Cyber, we explain historical methods of how we've used math to create secret messages (e.g. ciphers), and how computers have changed the game!
+            </p>
+            
+            <p>
+                Lead(s): 
+                
+                    <a class="tla-link" href="/team#lmohan">
+                        Lisha
+                    </a>,
+                
+                    <a class="tla-link" href="/team#awang">
+                        Alyssa
+                    </a>
+                
+            </p>
+            
+        </div>
+
+        <div class="dev-project-tech-container">
+            
+            <span class="dev-project-tech-tag">
+                react
+            </span>
+            
+            <span class="dev-project-tech-tag">
+                css
+            </span>
+            
+            <span class="dev-project-tech-tag">
+                bulma
+            </span>
+            
+        </div>
+    </div>
+    
+    <div class="dev-project-card">
+        <div class="dev-project-card-content">
+            <h3 class="title dev-project-title">
+                Gradient Descent Visualiser
+            </h3>
+            <div class="dev-project-info-row">
+                <span class="dev-project-badge lang-js"></span> javascript •
+                <a class="tla-link" href="https://uclaacm.github.io/gradient-descent-visualiser/"><span class="fa fa-link"></span> project</a>
+                 •
+                <a class="tla-link" href="https://github.com/uclaacm/gradient-descent-visualiser"><span class="fab fa-github"></span> repo</a>
+            </div>
+            <p>
+                This mini-app acts as an interactive supplement to our AI/ML course and curriculum on linear regression and gradient descent - visualising what can be a very complex mathematical concept.
+            </p>
+            
+            <p>
+                Lead(s): 
+                
+                    <a class="tla-link" href="/team#mwang">
+                        Matt
+                    </a>
+                
+            </p>
+            
+        </div>
+
+        <div class="dev-project-tech-container">
+            
+            <span class="dev-project-tech-tag">
+                function-plot/d3
+            </span>
+            
+            <span class="dev-project-tech-tag">
+                js
+            </span>
+            
+            <span class="dev-project-tech-tag">
+                bulma
+            </span>
+            
+        </div>
+    </div>
+    
+    <div class="dev-project-card">
+        <div class="dev-project-card-content">
+            <h3 class="title dev-project-title">
+                Network Tarines
+            </h3>
+            <div class="dev-project-info-row">
+                <span class="dev-project-badge lang-js"></span> javascript •
+                <a class="tla-link" href="https://trusting-goodall-de8259.netlify.com/"><span class="fa fa-link"></span> project</a>
+                 •
+                <a class="tla-link" href="https://github.com/uclaacm/network-tarines"><span class="fab fa-github"></span> repo</a>
+            </div>
+            <p>
+                A cute mini-lesson that looks to demo networking infrastructure for elementary school kids - telling them just how online games and websites are delivered straight to your computer! Features a React Frontend and an Express backend!
+            </p>
+            
+            <p>
+                Lead(s): 
+                
+                    <a class="tla-link" href="/team#nvan">
+                        Nhi
+                    </a>
+                
+            </p>
+            
+        </div>
+
+        <div class="dev-project-tech-container">
+            
+            <span class="dev-project-tech-tag">
+                react
+            </span>
+            
+            <span class="dev-project-tech-tag">
+                express
+            </span>
+            
+            <span class="dev-project-tech-tag">
+                sockets
+            </span>
+            
+        </div>
+    </div>
+    
+</div>
+
+<div class="cta-container text-center">
+    <hr class="divider" />
+    <h2 class="title">Interested in working with us?</h2>
+    <br />
+    <p>
+        are you...
+    </p>
+    <p class="bottom-button-container">
+        <a class="button" href="/join">
+            <span class="fa fa-fw fa-chalkboard-teacher"></span> Looking to Teach
+        </a>
+        <a class="button" href="/dev">
+            <span class="fa fa-fw fa-code"></span> Looking to Code
+        </a>
+        <a class="button" href="/about#school-join">
+            <span class="fa fa-fw fa-school"></span> Representing a School
+        </a>
+    </p>
+    <p class="title">or, send us an email at <a class="tla-link" href="mailto:acmteachla@gmail.com">acmteachla@gmail.com</a></p>
+</div>
+
+      
+    </div><footer class="footer">
+    <div class="container container-restricted">
+        <div class="footer-row">
+            <div class="footer-fullheight-col">
+                <div>
+                    <h2 class="footer-title">ACM Teach LA</h2>
+                    <ul class="footer-nav">
+                        <li>
+                            <a href="mailto:acmteachla@gmail.com">
+                                <span class="fa fa-fw fa-envelope"></span> acmteachla@gmail.com
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/acmteachla/" target="_blank" rel="noopener noreferrer">
+                                <span class="fab fa-fw fa-facebook"></span> ACM Teach LA
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/uclaacm" target="_blank" rel="noopener noreferrer">
+                                <span class="fab fa-fw fa-github"></span> uclaacm
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/company/acm-teach-la-acm-ucla" target="_blank" rel="noopener noreferrer">
+                                <span class="fab fa-fw fa-linkedin"></span> ACM Teach LA
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <a class="footer-link" href="https://www.netlify.com" target="_blank" rel="noopener noreferrer">
+                    <img src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Deploys by Netlify" />
+                </a>
+            </div>
+            <div>
+                <h3 class="footer-subtitle">what we do</h3>
+                <ul class="footer-nav">
+                    <li>
+                        <a href="/classes">classes</a>
+                    </li>
+                    <li>
+                        <a href="/dev">dev</a>
+                    </li>
+                    <li>
+                        <a href="https://editor.uclaacm.com" target="_blank" rel="noopener noreferrer">editor</a>
+                    </li>
+                    <li>
+                        <a href="/resources">resources</a>
+                    </li>
+                </ul>
+                <h3 class="footer-subtitle">events</h3>
+                <ul class="footer-nav text-1x">
+                    <li>
+                        <a href="/citylab-cyber">Cyber Day with CityLab</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="text-desktop-right">
+                <h3 class="footer-subtitle">
+                    who we are
+                </h3>
+                <ul class="footer-nav">
+                    <li>
+                        <a href="/about">about</a>
+                    </li>
+                    <li>
+                        <a href="/blog">blog</a>
+                    </li>
+                    <li>
+                        <a href="/reports">reports</a>
+                    </li>
+                    <li>
+                        <a href="/team">team</a>
+                    </li>
+                </ul>
+                <h3 class="footer-subtitle">
+                    internal
+                </h3>
+                <ul class="footer-nav">
+                    <li>
+                        <a href="/docs">docs</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <p class="text-center">
+            &copy; ACM @ UCLA 2019-* // made with <span class="fa fa-heart animated-heartbeat" style="color:tomato" aria-label="animated heartbeat"></span> and <a class="footer-link" href="https://github.com/uclaacm/teach-la-website" target="_blank" rel="noopener noreferrer"><span class="fab fa-github" aria-label="GitHub Logo & Repository"></span></a>
+            <br>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

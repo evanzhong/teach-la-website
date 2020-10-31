@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dev Setup: In-Depth Walkthrough | ACM Teach LA</title>
+  <link rel="icon" href="/img/teachLA_logo_light.png" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/solid.js" integrity="sha384-4RG3cEPIlCBy6VNzxM9ZoEwZW+65ed5JDOfaJAnQqwV6ha/jZDJTXjFmvjFM4bk4" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/brands.js" integrity="sha384-V7gsTxvUZaeC6NAsCa24o3WvPOXwSsUM8/SBgy+fxlzWL3xEGXHsAv2E3UO5zKcZ" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/fontawesome.js" integrity="sha384-DNo9bmYZCHLtp0n0l0XA2UsoRHX1nx38aRP+p9yoP5A8kVTfeWG3aySMOq5FD/v3" crossorigin="anonymous"></script>
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Dev Setup: In-Depth Walkthrough" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Dev Setup: In-Depth Walkthrough" />
+<meta property="og:description" content="Dev Setup: In-Depth Walkthrough" />
+<link rel="canonical" href="https://teachla.uclaacm.com/docs/dev-setup" />
+<meta property="og:url" content="https://teachla.uclaacm.com/docs/dev-setup" />
+<meta property="og:site_name" content="ACM Teach LA" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-10-31T03:05:46+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Dev Setup: In-Depth Walkthrough" />
+<script type="application/ld+json">
+{"description":"Dev Setup: In-Depth Walkthrough","url":"https://teachla.uclaacm.com/docs/dev-setup","@type":"BlogPosting","headline":"Dev Setup: In-Depth Walkthrough","dateModified":"2020-10-31T03:05:46+00:00","datePublished":"2020-10-31T03:05:46+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://teachla.uclaacm.com/docs/dev-setup"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+<body><div id="navbar">
+  <div id="navbar-inner">
+    <a href="/docs/">
+      <div id="nav-title" class="nav-section left">
+        <img src="/img/teachLA_wordmark_light.svg" id="acm-tla-wordmark" alt="ACM Teach LA Wordmark" />
+      </div>
+    </a>
+    <div class="nav-section right" id="desktop-nav">
+      <ul class="nav-items">
+        <li class="nav-button"><a href="/">back to site</a></li>
+      </ul>
+    </div>
+    <div class="nav-section right" id="mobile-nav">
+      <label for="menu-toggle">
+        <span class="hamburger-icon">
+          <span class="bar" id="top-bar"></span>
+          <span class="bar" id="middle-bar"></span>
+          <span class="bar" id="bottom-bar"></span>
+        </span>
+      </label>
+      <input type="checkbox" id="menu-toggle" />
+      <div id="hamburger-menu">
+        <ul class="nav-items">
+          <li class="nav-button"><a href="/">back to site</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+      function logTopSecretMessage(message){
+        console.log(
+          `%c${message}`,
+          "color:#A1D900;"
+        )
+      }
+
+      logTopSecretMessage("Hey! You there! Yes, you, the person going through our JS logs.");
+      logTopSecretMessage("Don't worry, our site isn't collecting any data about you, or anything, really. Pinky promise.");
+      logTopSecretMessage("You look like somebody who likes web programming and hacking. Why not join our dev team? Check out https://teachla.uclaacm.com/dev");
+    </script>
+    <div class="container container-fill
+      container-restricted
+      generated-content
+    ">
+      <h1 id="dev-setup-in-depth-walkthrough">Dev Setup: In-Depth Walkthrough</h1>
+
+<p>You want to contribute to the Teach LA Website! Awesome! Before you get started, you’ll need to set up some things. Here, we’ll walk you through step-by-step how to set up each component. We’ll tell you how to check if you already have each component, how to briefly install it if you don’t, and then show you some extra resources where you can learn more (but only if you want)!</p>
+
+<p>Some of this may already be familiar for you. Feel free to skip around to the parts that are relevant.</p>
+
+<p>You may ask: why is the website so complicated to set up! You may have a point, but it allows us to write features that let you update the website <strong>without writing code</strong>: we’ve written templates that generate pages, content, and complicated data relationships, so you don’t have to! Hopefully, with practice, you’ll find this to be not too tricky.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ul>
+  <li><a href="#table-of-contents">Table of Contents</a></li>
+  <li><a href="#navigating-your-shell">Navigating your Shell</a></li>
+  <li><a href="#github">GitHub</a>
+    <ul>
+      <li><a href="#creating-a-github-account">Creating a GitHub Account</a></li>
+      <li><a href="#joining-our-github-organization">Joining our GitHub Organization</a></li>
+    </ul>
+  </li>
+  <li><a href="#installing-git">Installing Git</a>
+    <ul>
+      <li><a href="#if-youre-using-wsl-or-linux">If you’re using WSL or Linux</a></li>
+      <li><a href="#if-youre-using-osx">If you’re using OSX</a></li>
+    </ul>
+  </li>
+  <li><a href="#one-time-setup">One-Time Setup</a>
+    <ul>
+      <li><a href="#cloning-our-repository">Cloning our Repository</a></li>
+      <li><a href="#installing-dependencies">Installing Dependencies</a></li>
+    </ul>
+  </li>
+  <li><a href="#development-workflow">Development Workflow</a>
+    <ul>
+      <li><a href="#create-a-new-branch">Create a New Branch</a></li>
+      <li><a href="#running-jekyll-with-bundle">Running Jekyll with Bundle</a></li>
+      <li><a href="#make-your-changes">Make your Changes</a></li>
+      <li><a href="#add-commit-and-push">Add, Commit, and Push</a></li>
+    </ul>
+  </li>
+  <li><a href="#next-steps">Next Steps</a></li>
+  <li><a href="#appendix">Appendix</a>
+    <ul>
+      <li><a href="#github-desktop">GitHub Desktop</a></li>
+      <li><a href="#installing-ruby-with-rvm">Installing Ruby with RVM</a></li>
+      <li><a href="#installing-wsl">Installing WSL</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="navigating-your-shell">Navigating your Shell</h2>
+
+<p><em>If you’ve used a shell before, you can skip this step.</em></p>
+
+<p>The first step in our dev journey is to get ourselves accustomed to working in the terminal. We’ll use the terminal to help preview what our website code looks like, and also work with all the tools that track the changes to it. This may be a bit scary if you’ve never used one before, but have no fear - we’re here to guide you!</p>
+
+<p>Your shell depends on what operating system you’re using:</p>
+
+<ul>
+  <li>If you’re on Windows, you will first need to install the <a href="https://docs.microsoft.com/en-us/windows/wsl/about">Windows Subsystem for Linux</a>. An install guide is provided in <a href="#Installing-WSL">the appendix</a>, which we recommend you follow first.</li>
+  <li>If you’re on macOS, your default shell is the “Terminal” app.</li>
+  <li>If you’re on Linux, well, you probably know what your default shell is. If you’re on Ubuntu, though, it will be the “Terminal” app.</li>
+</ul>
+
+<p>Great! Once you have it open, we should introduce a few basic tools:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">cd</code>: <strong>Change directory</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">ls</code>: <strong>List directory</strong></li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span>                    <span class="c"># executing cd will take you to your home directory.</span>
+<span class="nv">$ </span><span class="nb">cd</span> /some/directory    <span class="c"># this will take you to a specific directory!</span>
+<span class="nv">$ </span><span class="nb">ls</span>                    <span class="c"># this will list contents of your current directory.</span>
+</code></pre></div></div>
+
+<p>We will be using this to navigate our computer’s files going forward. Any time you see a block of code that looks like:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">command</span>
+</code></pre></div></div>
+
+<p>Then you should know that this should be typed into your terminal!</p>
+
+<p>Last thing, <strong>if you are on WSL</strong>, things are a little different. Your computer’s traditional disk drives like <code class="language-plaintext highlighter-rouge">C:</code> will be found at the location <code class="language-plaintext highlighter-rouge">/mnt</code>. For example, if I wanted to go to the Windows path <code class="language-plaintext highlighter-rouge">C:\Users\teachla\Desktop\teach-la-website</code>, then you would use the command <code class="language-plaintext highlighter-rouge">cd /mnt/c/Users/teachla/Desktop/teach-la-website</code>.</p>
+
+<p>Now we can move on to our next step in working on our website: getting a GitHub!</p>
+
+<h2 id="github">GitHub</h2>
+
+<p>GitHub is the website that we use for tracking all the changes to all of our projects. It hosts our project folders (called “repositories”), that are controlled by another piece of software we’ll be using, called Git.</p>
+
+<h3 id="creating-a-github-account">Creating a GitHub Account</h3>
+
+<p>The first step on this journey is to create our actual account. We can do so by visiting <a href="https://github.com/join">the “Sign up” page</a>.</p>
+
+<h3 id="joining-our-github-organization">Joining our GitHub Organization</h3>
+
+<p><em>If you’re part of the uclaacm org, you can skip this step.</em></p>
+
+<p>Great, so now you have a GitHub account. To make changes to our website, you need to be part of the <a href="https://github.com/uclaacm">uclaacm GitHub Organization</a>. If you’re already part of our org (you can find out by checking <a href="https://github.com/orgs/uclaacm/people">the people category</a>), you can skip this step.</p>
+
+<p>If you’re not part of our GitHub organization, you need to ask someone to add you! Your best bet is either our president or our dev team director. Reach out to them about getting permissions. Don’t worry if this takes a bit of time; you can make changes to the website on your computer without being part of the organization; it’s only in <strong>uploading those changes</strong> that you need to be part of the organization.</p>
+
+<h2 id="installing-git">Installing Git</h2>
+
+<p>Git is a piece of software that controls the changes to our repository. Since GitHub hosts <em>repositories</em>, we need to install it to actually work with GitHub. To download and install it, see below:</p>
+
+<h3 id="if-youre-using-wsl-or-linux">If you’re using WSL or Linux</h3>
+
+<p>For Linux or WSL, you can install the <code class="language-plaintext highlighter-rouge">git</code> package from your provided package manager.</p>
+
+<p>Assuming that you are using Ubuntu, specifically, you can just run:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> git
+</code></pre></div></div>
+
+<h3 id="if-youre-using-osx">If you’re using OSX</h3>
+
+<p>Visit the <a href="https://git-scm.com/downloads">Git downloads page</a> and pick out the installer for your system. After downloading, run the installer.</p>
+
+<p>For OSX, the installation process will seem rather complicated, but you should ensure that the installation process <strong>adds Git to your PATH</strong>. The option to do this if you’re using a graphical installer will be very explicit. This means that you will be able to use the command <code class="language-plaintext highlighter-rouge">git</code> from your default shell, as we found earlier.</p>
+
+<p>To check to make sure that Git is working as expected, open your shell and run <code class="language-plaintext highlighter-rouge">git -v</code>. It should output something like this:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tla@acm:/my/path/to/teach-la-website<span class="nv">$ </span>git <span class="nt">--version</span>
+git version 2.25.1
+</code></pre></div></div>
+
+<p>Don’t worry if your prompt looks a little different. What we care about is the version output here.</p>
+
+<p>After this, we are ready to get started.</p>
+
+<h2 id="one-time-setup">One-Time Setup</h2>
+
+<p>These next steps take a few minutes of time, but you <em>only need to do them once</em>.</p>
+
+<h3 id="cloning-our-repository">Cloning our Repository</h3>
+
+<p>Our first step is to “clone” the repository, which means grabbing a local copy of the website to make changes to. We do that with the <code class="language-plaintext highlighter-rouge">git</code> command:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git clone https://github.com/uclaacm/teach-la-website.git
+</code></pre></div></div>
+
+<p>What this does is grab the copy of our website located on GitHub, and creates a local copy on our computer.</p>
+
+<p>Once that command is done, a new folder will have been created. We can check if it’s there with the <code class="language-plaintext highlighter-rouge">ls</code> command:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">ls
+</span>js-backend       teach-la-website <span class="c"># &lt;-- there it is!</span>
+gradient-descent-visualiser  network-tarines
+</code></pre></div></div>
+
+<p>We can then enter the directory with the <code class="language-plaintext highlighter-rouge">cd</code> command, so we can do some more things.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd </span>teach-la-website
+</code></pre></div></div>
+
+<p>And now we’ve installed a local copy of our website! But we’re not done installing yet…</p>
+
+<h3 id="installing-dependencies">Installing Dependencies</h3>
+
+<p>Our website is built with <a href="https://jekyllrb.com">Jekyll</a>, a “static-site generator”. Really, it’s a piece of software (written in Ruby) that helps us make our website. But, we have to install it first!</p>
+
+<p>Almost all computers have ruby installed. To double-check, you can run the following command in your shell:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ruby <span class="nt">-v</span>
+ruby 2.7.1p83 <span class="o">(</span>2020-03-31 revision a0c7c23c9c<span class="o">)</span> <span class="o">[</span>x86_64-darwin19]
+</code></pre></div></div>
+
+<p>If you don’t have Ruby on your system, you can check the <a href="#appendix-installing-ruby-with-rvm">appendix entry: installing ruby with rvm</a>.</p>
+
+<p>First, we’ll install a “helper” tool called <code class="language-plaintext highlighter-rouge">bundler</code> that lets us install libraries easily.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>gem <span class="nb">install </span>bundler
+</code></pre></div></div>
+
+<p>If this command doesn’t execute properly, then there’s two things you can do:</p>
+<ol>
+  <li>Run <code class="language-plaintext highlighter-rouge">sudo gem install bundler</code> instead.</li>
+  <li>Install RVM <a href="#appendix-installing-ruby-with-rvm">using our appendix entry</a> and then re-run the command.</li>
+</ol>
+
+<p>Then, we’ll run a new command, called <code class="language-plaintext highlighter-rouge">bundle</code>. It will install all of our dependencies.</p>
+
+<p><em>Note: this might take a few minutes, depending on your internet connection and computer.</em></p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bundle
+</code></pre></div></div>
+
+<p>Great! That’s it, and we’re ready to start actually making changes!</p>
+
+<p>One last tidbit: every now and then, we’ll make changes that update our dependencies. The command line will tell you to run <code class="language-plaintext highlighter-rouge">bundle</code> again (just like we did), so you should do just that.</p>
+
+<h2 id="development-workflow">Development Workflow</h2>
+
+<p>Okay, so how do we make changes to our site? We’ll walk you through what you need to do to get your site up and running.</p>
+
+<h3 id="create-a-new-branch">Create a New Branch</h3>
+
+<p>We want to make sure that changes we make don’t impact other people, or at least not until those changes are done. Out of courtesy, we’ll develop our changes on our own “branch”, which is a version of our code.</p>
+
+<p>The default branch is called <code class="language-plaintext highlighter-rouge">master</code>, and it contains the code that goes live on <a href="https://teachla.uclaacm.com">teachla.uclaacm.com</a>. We don’t want to touch that just yet, so we’re going to make our own branch!</p>
+
+<p>We can check what branch we’re on with the <code class="language-plaintext highlighter-rouge">git branch</code> command:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git branch
+  <span class="k">for</span><span class="nt">-educators</span>
+<span class="k">*</span> master
+  working-on-new-ai-ml-collection
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">*</code> means that we’re currently on master. Let’s make a new branch from master, with the <code class="language-plaintext highlighter-rouge">git checkout -b</code> command:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git checkout <span class="nt">-b</span> my-new-feature
+<span class="nv">$ </span>git branch
+  <span class="k">for</span><span class="nt">-educators</span>
+  master
+<span class="k">*</span> my-new-feature
+  working-on-new-ai-ml-collection
+</code></pre></div></div>
+
+<p>Great! Now we’re ready to make our changes.</p>
+
+<h3 id="running-jekyll-with-bundle">Running Jekyll with Bundle</h3>
+
+<p>It turns out, we need to “compile” our website. Weird, right? Let’s do it, with the <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> command; you’ll get something like this:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bundle <span class="nb">exec </span>jekyll serve
+Configuration file: /Users/matt/code/teach-la-website/_config.yml
+            Source: /Users/matt/code/teach-la-website
+       Destination: /Users/matt/code/teach-la-website/_site
+ Incremental build: disabled. Enable with <span class="nt">--incremental</span>
+      Generating...
+                    <span class="k">done in </span>0.17 seconds.
+ Auto-regeneration: enabled <span class="k">for</span> <span class="s1">'/Users/matt/code/teach-la-website'</span>
+    Server address: http://127.0.0.1:4000/
+  Server running... press ctrl-c to stop.
+</code></pre></div></div>
+
+<p>In your browser, visit what follows the “Server address” line, which is almost always <a href="http://127.0.0.1:4000/">http://127.0.0.1:4000/</a>. You should see a copy of your site up and running!</p>
+
+<h3 id="make-your-changes">Make your Changes</h3>
+
+<p>Now, you just need to make some changes.</p>
+
+<p>Open up the <code class="language-plaintext highlighter-rouge">teach-la-website</code> folder in your favourite text editor (good free options are <a href="https://code.visualstudio.com/">Visual Studio Code</a>, <a href="https://www.sublimetext.com/">Sublime Text</a>,. or <a href="https://atom.io/">Atom</a>, but you can use whatever you like).</p>
+
+<p>Then, poke around the files and make your changes. Not sure where to make the changes? That’s where our other pages help you out!</p>
+
+<p>One quick thing: every time you save a file, Jekyll is smart enough to auto-rebuild the site! So, after you make a change, refresh the site in your browser, and you should see your change reflected!</p>
+
+<p>And that’s it! You’ve made some changes!</p>
+
+<h3 id="add-commit-and-push">Add, Commit, and Push</h3>
+
+<p>Now, we’ve got to add and commit our changes (which are fancy code words for saving them).</p>
+
+<p>Git has a three step process with making a change:</p>
+
+<ol>
+  <li><strong>Stage</strong> (or add) certain files that you want to “save”</li>
+  <li><strong>Commit</strong> a change on your local computer, with a message</li>
+  <li><strong>Push</strong> your change so everybody can see it! For us, we do this with a <strong>pull request</strong></li>
+</ol>
+
+<p>Let’s say I’ve made some changes. We can check what exactly has changed with the <code class="language-plaintext highlighter-rouge">git status</code> command:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git status
+On branch implement-docs-collection
+Changes not staged <span class="k">for </span>commit:
+  <span class="o">(</span>use <span class="s2">"git add &lt;file&gt;..."</span> to update what will be committed<span class="o">)</span>
+  <span class="o">(</span>use <span class="s2">"git restore &lt;file&gt;..."</span> to discard changes <span class="k">in </span>working directory<span class="o">)</span>
+  new file:   _docs/dev-setup.md
+</code></pre></div></div>
+
+<p>In this case, <code class="language-plaintext highlighter-rouge">git</code> is telling me that I made a new file called <code class="language-plaintext highlighter-rouge">_docs/dev-setup.md</code> (which is this very file).</p>
+
+<p>Great! I want to add (or stage) that file. We can do that with <code class="language-plaintext highlighter-rouge">git add</code>:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git add _docs/dev-setup.md
+<span class="nv">$ </span>git status
+On branch implement-docs-collection
+Changes to be committed:
+  <span class="o">(</span>use <span class="s2">"git restore --staged &lt;file&gt;..."</span> to unstage<span class="o">)</span>
+	new file:   _docs/dev-setup.md
+</code></pre></div></div>
+
+<p>Note that the <code class="language-plaintext highlighter-rouge">git add</code> command lets you specify all sorts of files and patterns. This is useful if you want to commit some files, but not others. You can also add all files with <code class="language-plaintext highlighter-rouge">git add *</code>, if you wish.</p>
+
+<p>Okay, if we’re 100% certain we want to make this change, we gotta commit! And we’ll do that with <code class="language-plaintext highlighter-rouge">git commit</code>:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s2">"Creates new Dev Setup page"</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">-m</code> flag says we want to add a message that describes our change. <strong>You should always add a descriptive commit message, so people know what changes you made.</strong></p>
+
+<p>Finally, we have to tell the world about our change! We’ll do that with <code class="language-plaintext highlighter-rouge">git push</code>. Note that for this step, <strong>you must be part of the uclaacm organization.</strong></p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git push
+</code></pre></div></div>
+
+<p>Sometimes, you may get an error like so:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git push
+fatal: The current branch implement-docs-collection has no upstream branch.
+To push the current branch and <span class="nb">set </span>the remote as upstream, use
+  git push <span class="nt">--set-upstream</span> origin implement-docs-collection
+</code></pre></div></div>
+
+<p>And we’ll do exactly what <code class="language-plaintext highlighter-rouge">git</code> tells us to do:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git push <span class="nt">--set-upstream</span> origin implement-docs-collection
+</code></pre></div></div>
+
+<p>And we’re done! If you go to the <a href="https://github.com/uclaacm/teach-la-website/branches">branches section of our GitHub repository</a>, you should see your branch there!</p>
+
+<p>You can keep on adding, committing, and pushing changes as you see fit.</p>
+
+<p>When you are ready to merge, then you can create a <strong>pull request</strong> – something we cover in <a href="/docs/static-setup">our next guide</a>!</p>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>We’ve covered a good deal of information in this doc, but there’s still a great deal of information out there. Here are some resources, along with the next steps you can take:</p>
+
+<p>Next steps:</p>
+<ul>
+  <li>Getting more familiar with HTML, CSS, JS</li>
+  <li>Learning and using React</li>
+  <li>Checking out the Teach LA Editor!</li>
+</ul>
+
+<p>Resources:</p>
+<ul>
+  <li><a href="https://reactjs.org/tutorial/tutorial.html">React.js Tutorial</a></li>
+  <li><a href="https://www.youtube.com/channel/UCwTqwgA4thysNbB2kNYsCIw">Teach LA’s Learning Labs Crash Course YouTube Series</a></li>
+</ul>
+
+<h2 id="appendix">Appendix</h2>
+
+<h3 id="github-desktop">GitHub Desktop</h3>
+
+<p>Now, we’ve been doing most our code in the realm of the command line. While this is great practice, you may find yourself doing the same repetitive actions over and over again. What’s more, if you’re like most computer users, you are using a graphical interface! (unless you aren’t, in which case this guide is likely some info you already know)</p>
+
+<p>Then, it may be worth checking out <a href="https://desktop.github.com/">GitHub’s Desktop application</a>. This is a graphical application that keeps the process of <code class="language-plaintext highlighter-rouge">add</code>ing files, <code class="language-plaintext highlighter-rouge">commit</code>ing files, <code class="language-plaintext highlighter-rouge">push</code>ing, and <code class="language-plaintext highlighter-rouge">pull</code>ing within the realm of your keyboard <em>and</em> mouse.</p>
+
+<p>When you change files within a repo that is visible on GitHub Desktop, you’ll see that the list of changed files automatically updates. This is equivalent to the output of <code class="language-plaintext highlighter-rouge">git status</code>.</p>
+
+<p>If you want to add these files to your next commit, you can check the box next to their row, which is equivalent to <code class="language-plaintext highlighter-rouge">git add</code>.</p>
+
+<p>If you want to make a commit, simply write a message in the box below your list of changed files, then press the commit button.</p>
+
+<p>To <code class="language-plaintext highlighter-rouge">push</code> and <code class="language-plaintext highlighter-rouge">pull</code>, use the sync button in the interface.</p>
+
+<h3 id="installing-ruby-with-rvm">Installing Ruby with RVM</h3>
+
+<p><a href="http://rvm.io/">RVM</a> stands for the <strong>Ruby Version Manager</strong>. It is a handy shell script that lets us keep multiple versions of the Ruby interpreter on our computer without breaking any existing ones! The only catch? It only works on UNIX-based operating systems. That means that it won’t work on Windows by default, but it <strong>will</strong> work on WSL.</p>
+
+<p>Following along with the installation guide available on <a href="http://rvm.io/rvm/install">their website</a> is usually enough, but there are a few hitches you might run into along the way. Here’s our version of the installation guide:</p>
+
+<p>First we need to add the PGP keys of the project maintainer to ensure that the installer we download isn’t malicious. We can do this with:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg <span class="nt">--keyserver</span> hkp://pool.sks-keyservers.net <span class="se">\</span>
+  <span class="nt">--recv-keys</span> 409B6B1796C275462A1703113804BB82D39DC0E3 <span class="se">\</span>
+  7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+</code></pre></div></div>
+
+<p>This assumes that you have <code class="language-plaintext highlighter-rouge">gpg</code> installed on your device. It is standard on OSX (Macs), and <em>highly recommended</em> on Linux distributions. If you don’t have <code class="language-plaintext highlighter-rouge">gpg</code> installed for some reason on your system, you likely know what you are doing. To reinstall it, use the packages provided on the <a href="https://gnupg.org/download/">GnuPG</a> website.</p>
+
+<p>Now, we can install RVM by running the following:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="se">\c</span>url <span class="nt">-sSL</span> https://get.rvm.io | bash <span class="nt">-s</span> stable <span class="nt">--ruby</span>
+</code></pre></div></div>
+
+<p>Following installation, you should see some output like:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">*</span> To start using RVM you need to run <span class="sb">`</span><span class="nb">source</span> /home/myuser/.rvm/scripts/rvm<span class="sb">`</span>
+    <span class="k">in </span>all your open shell windows, <span class="k">in </span>rare cases you need to reopen all shell windows.
+</code></pre></div></div>
+
+<p>If you see something else, then the installation may have went haywire. No worries! Most issues can be resolved by reinstalling RVM using the steps above. If that doesn’t work, then try clearing your existing installation of RVM with <code class="language-plaintext highlighter-rouge">rm -rf ~/.rvm</code> and then reinstalling.</p>
+
+<p>For RVM to work properly, we are required to place its binaries at the first position in our <code class="language-plaintext highlighter-rouge">$PATH</code> environment variable, and to run <code class="language-plaintext highlighter-rouge">source /home/myuser/.rvm/scripts/rvm</code> to get it to work properly. This can be solved by appending lines to our <code class="language-plaintext highlighter-rouge">.bashrc</code> (or <code class="language-plaintext highlighter-rouge">.zshrc</code>) with some simple shell commands:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># prepend to PATH:</span>
+<span class="nb">echo</span> <span class="s2">"export PATH=</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span><span class="s2">/.rvm/bin:</span><span class="k">${</span><span class="nv">PATH</span><span class="k">}</span><span class="s2">"</span> <span class="o">&gt;&gt;</span> <span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.bashrc
+
+<span class="c"># load rvm into every shell</span>
+<span class="nb">echo</span> <span class="s2">"source </span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span><span class="s2">/.rvm/scripts/rvm"</span> <span class="o">&gt;&gt;</span> <span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.bashrc
+
+<span class="c"># load rvm</span>
+<span class="nb">source</span> <span class="k">${</span><span class="nv">HOME</span><span class="k">}</span>/.rvm/scripts/rvm
+</code></pre></div></div>
+
+<p>Now, log out and back in to your terminal (close and reopen it, if using a GUI), and choose a version of Ruby to install and use:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rvm <span class="nb">install </span>2.7.0
+rvm use 2.7.0
+</code></pre></div></div>
+
+<p>If either of these commands output any kind of error, then you should retry our installation guide.</p>
+
+<p>You’re all set for Ruby development! If you followed this chapter while you were going through the docs for the first time, then you should be able to resume your setup process from <a href="#installing-dependencies">the installing dependencies header</a>.</p>
+
+<h3 id="installing-wsl">Installing WSL</h3>
+
+<p>The <strong>Windows Subsystem for Linux (WSL)</strong> is a way to run native Linux applications from within Windows, by compartmentalizing a Linux kernel on your Windows installation. It opens up the whole of native Linux tools and programs to you without sacrificing the more familiar GUI and software compatability of Windows. Here’s how to install it:</p>
+<ul>
+  <li>Open Powershell/Command Prompt as an administrator (<code class="language-plaintext highlighter-rouge">&lt;Windows Key + X&gt; &lt;a&gt;</code>)</li>
+  <li>Enable WSL as a Windows feature by running: <code class="language-plaintext highlighter-rouge">dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</code></li>
+  <li>Reboot.</li>
+  <li>Install your Linux operating system of choice from the <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10#install-your-linux-distribution-of-choice">Windows Store</a> and follow along with the install instructions.</li>
+  <li>Now you can shell into your Linux subsystem by opening a terminal and running <code class="language-plaintext highlighter-rouge">wsl</code>!</li>
+</ul>
+
+<p>For our dev setup, you will want to install Ruby to your system. We personally recommend that you follow along with our <a href="#installing-ruby-with-rvm">RVM install guide</a> in the chapter before this.</p>
+
+<p>After installing WSL, you can follow along with the development environment setup instructions for any standard Linux distribution for not just the development software we use here, but for any at all!</p>
+
+      
+    </div><footer class="footer">
+    <div class="container container-restricted">
+        <div class="footer-row">
+            <div class="footer-fullheight-col">
+                <div>
+                    <h2 class="footer-title">ACM Teach LA</h2>
+                    <ul class="footer-nav">
+                        <li>
+                            <a href="mailto:acmteachla@gmail.com">
+                                <span class="fa fa-fw fa-envelope"></span> acmteachla@gmail.com
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/acmteachla/" target="_blank" rel="noopener noreferrer">
+                                <span class="fab fa-fw fa-facebook"></span> ACM Teach LA
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/uclaacm" target="_blank" rel="noopener noreferrer">
+                                <span class="fab fa-fw fa-github"></span> uclaacm
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/company/acm-teach-la-acm-ucla" target="_blank" rel="noopener noreferrer">
+                                <span class="fab fa-fw fa-linkedin"></span> ACM Teach LA
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <a class="footer-link" href="https://www.netlify.com" target="_blank" rel="noopener noreferrer">
+                    <img src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Deploys by Netlify" />
+                </a>
+            </div>
+            <div>
+                <h3 class="footer-subtitle">what we do</h3>
+                <ul class="footer-nav">
+                    <li>
+                        <a href="/classes">classes</a>
+                    </li>
+                    <li>
+                        <a href="/dev">dev</a>
+                    </li>
+                    <li>
+                        <a href="https://editor.uclaacm.com" target="_blank" rel="noopener noreferrer">editor</a>
+                    </li>
+                    <li>
+                        <a href="/resources">resources</a>
+                    </li>
+                </ul>
+                <h3 class="footer-subtitle">events</h3>
+                <ul class="footer-nav text-1x">
+                    <li>
+                        <a href="/citylab-cyber">Cyber Day with CityLab</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="text-desktop-right">
+                <h3 class="footer-subtitle">
+                    who we are
+                </h3>
+                <ul class="footer-nav">
+                    <li>
+                        <a href="/about">about</a>
+                    </li>
+                    <li>
+                        <a href="/blog">blog</a>
+                    </li>
+                    <li>
+                        <a href="/reports">reports</a>
+                    </li>
+                    <li>
+                        <a href="/team">team</a>
+                    </li>
+                </ul>
+                <h3 class="footer-subtitle">
+                    internal
+                </h3>
+                <ul class="footer-nav">
+                    <li>
+                        <a href="/docs">docs</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <p class="text-center">
+            &copy; ACM @ UCLA 2019-* // made with <span class="fa fa-heart animated-heartbeat" style="color:tomato" aria-label="animated heartbeat"></span> and <a class="footer-link" href="https://github.com/uclaacm/teach-la-website" target="_blank" rel="noopener noreferrer"><span class="fab fa-github" aria-label="GitHub Logo & Repository"></span></a>
+            <br>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

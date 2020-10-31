@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Making of "Passworks" | ACM Teach LA</title>
+  <link rel="icon" href="/img/teachLA_logo_light.png" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/solid.js" integrity="sha384-4RG3cEPIlCBy6VNzxM9ZoEwZW+65ed5JDOfaJAnQqwV6ha/jZDJTXjFmvjFM4bk4" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/brands.js" integrity="sha384-V7gsTxvUZaeC6NAsCa24o3WvPOXwSsUM8/SBgy+fxlzWL3xEGXHsAv2E3UO5zKcZ" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/fontawesome.js" integrity="sha384-DNo9bmYZCHLtp0n0l0XA2UsoRHX1nx38aRP+p9yoP5A8kVTfeWG3aySMOq5FD/v3" crossorigin="anonymous"></script>
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="The Making of “Passworks”" />
+<meta name="author" content="Jamie" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="In this post, I’ll discuss the process of building Passworks, an educational module consisting of several activities designed to teach password security concepts." />
+<meta property="og:description" content="In this post, I’ll discuss the process of building Passworks, an educational module consisting of several activities designed to teach password security concepts." />
+<link rel="canonical" href="https://teachla.uclaacm.com/blog/dev/2020/09/23/the-making-of-passworks/" />
+<meta property="og:url" content="https://teachla.uclaacm.com/blog/dev/2020/09/23/the-making-of-passworks/" />
+<meta property="og:site_name" content="ACM Teach LA" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-09-23T04:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="The Making of “Passworks”" />
+<script type="application/ld+json">
+{"description":"In this post, I’ll discuss the process of building Passworks, an educational module consisting of several activities designed to teach password security concepts.","url":"https://teachla.uclaacm.com/blog/dev/2020/09/23/the-making-of-passworks/","@type":"BlogPosting","headline":"The Making of “Passworks”","dateModified":"2020-09-23T04:00:00+00:00","datePublished":"2020-09-23T04:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://teachla.uclaacm.com/blog/dev/2020/09/23/the-making-of-passworks/"},"author":{"@type":"Person","name":"Jamie"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+<body><div id="navbar">
+  <div id="navbar-inner">
+    <a href="/">
+      <div id="nav-title" class="nav-section left">
+        <img src="/img/teachLA_wordmark_light.svg" id="acm-tla-wordmark" alt="ACM Teach LA Wordmark" />
+      </div>
+    </a>
+    <div class="nav-section right" id="desktop-nav">
+      <ul class="nav-items">
+        <li><a href="/about">About</a></li>
+        <li><a href="/classes">Classes</a></li>
+        <li><a href="/dev">Dev</a></li>
+        <li><a href="/team">Team</a></li>
+        <li class="nav-button"><a href="/join">Join Us!</a></li>
+      </ul>
+    </div>
+    <div class="nav-section right" id="mobile-nav">
+      <label for="menu-toggle">
+        <span class="hamburger-icon">
+          <span class="bar" id="top-bar"></span>
+          <span class="bar" id="middle-bar"></span>
+          <span class="bar" id="bottom-bar"></span>
+        </span>
+      </label>
+      <input type="checkbox" id="menu-toggle" />
+      <div id="hamburger-menu">
+        <ul class="nav-items">
+          <li><a href="/about">About</a></li>
+          <li><a href="/classes">Classes</a></li>
+          <li><a href="/dev">Dev</a></li>
+          <li><a href="/team">Team</a></li>
+          <li class="nav-button"><a href="/join">Join Us!</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+      function logTopSecretMessage(message){
+        console.log(
+          `%c${message}`,
+          "color:#A1D900;"
+        )
+      }
+
+      logTopSecretMessage("Hey! You there! Yes, you, the person going through our JS logs.");
+      logTopSecretMessage("Don't worry, our site isn't collecting any data about you, or anything, really. Pinky promise.");
+      logTopSecretMessage("You look like somebody who likes web programming and hacking. Why not join our dev team? Check out https://teachla.uclaacm.com/dev");
+    </script>
+    <div class="container container-fill container-restricted">
+      <article class="post-container">
+    <h1 class="title page-title">The Making of "Passworks"</h1>
+
+    <div>
+        <p>
+            written by: <a class="tla-link" href="#authors">Jamie</a> •
+            Sep 23, 2020 •
+            
+            
+            4559 words •
+            <span class="fa fa-clock"></span>
+            
+            ~ 25 minute read
+            
+        </p>
+    </div>
+
+    <hr class="divider" />
+    <div class="generated-content">
+        <p>In this post, I’ll discuss the process of building <a href="https://passworks.uclaacm.com">Passworks</a>, an educational module consisting of several activities designed to teach password security concepts.</p>
+
+<p><img src="/img/posts/passworks/home.png" alt="passworks homepage" class="post-img" /></p>
+
+<p>The activities demonstrate the importance of password length, using a variety of different character types in a password, having a unique password, and being aware of social engineering attacks. Throughout this post, I’ll talk about the logistics of the development process, how I made certain technical design decisions, content presentation, problems I had to debug, and some other (hopefully) fun and interesting things I encountered during development.</p>
+
+<hr />
+
+<h2 id="logistics">Logistics</h2>
+
+<p>Overall, the project’s development consisted of these stages: proposal, content development, and a loop of coding, testing, and review/feedback.</p>
+
+<p>The project spanned approximately one quarter, with most of the development occuring in the span of a month. The project was first proposed by a member of <a href="https://acmcyber.com/">ACM Cyber</a>, Alyssa, and was intended to be a series of educational activities designed to introduce password security concepts. She fleshed out some intial ideas of which particular topics to cover and some ideas on how to present them as fun activities (rather than lectures). The folks over at <a href="https://citylabatucla.wixsite.com/citylab">CityLab at UCLA</a> were also interested in the idea for an event they were hosting, and become involved in the curriculum development. They were able to provide some details on the target audience of the project (high school students) and provided feedback throughout the development process on course content.</p>
+
+<p>In general, the communication between Teach LA and CityLabs was pretty smooth. My outreach team members (particularly Leo and Matt) did an amazing job of communicating with the CityLabs team and breaking their thoughts down for me, so I had a pretty fair idea of what needed to be done at any given time. Though I occasionally felt a bit pressed for time due to the project deadline, the clear communication was really helpful in managing tasks and work to be done for the project.</p>
+
+<p>I was also fortunate enough to have frequent code reviews and design/content feedback from the Teach LA team and testers, which was very useful during the development and iteration process.</p>
+
+<hr />
+
+<h2 id="tech-stack">Tech Stack</h2>
+
+<p>Like all other Teach LA learning lab modules to date, this project is a web app. I decided that it wouldn’t require persistent storage of user information, and thus does not require a backend or database. I chose to use <a href="https://reactjs.org/">React</a> because I had prior experience with it and for its component reusability. I also decided to use <a href="https://material-ui.com/">Material-UI</a>, which I had less experience working with at the time, in order to leverage their quality prebuilt UI components.</p>
+
+<hr />
+
+<h2 id="targeting-our-audience">Targeting Our Audience</h2>
+
+<p>As the app was intended for an audience of high-schoolers, it was important that the contents and presentation of the material reflected that.</p>
+
+<p>On the side of content development, we made sure to think of activities that allowed the users to make choices (like which password to input), and more interactive or relatable activities like the Social Engineering Activity with a mock Instagram. In addition, I made use of animations in various parts of the app to make it more visually appealing and interesting. I also made it a priority to present the lesson contents in an engaging and conversational tone. Notably, each topic is introduced through a scripted mini-conversation between the user and a “Hackerman” friend.</p>
+
+<p>Another important consideration during development was how to handle swear words and inappropriate content during the Common Passwords Activity. For this section, I made sure to only output whether the user’s input was in the list or not, and not repeat what the user input was. For example, I didn’t want the app to say “The password you input, ****, was in the top 10,000 most common passwords!” In the later section displaying the Most Common Passwords, it was necessary for us to manually go through the list of passwords and curate the appropriate ones (shout out to <a href="https://matthewwang.me/">Matt</a>!).</p>
+
+<hr />
+
+<h2 id="design-decisions-during-development">Design Decisions During Development</h2>
+
+<p>To be honest, I was pretty daunted by the task at hand when I was initially presented with the project proposal and the content planned. I worked off of this <a href="https://www.figma.com/file/QFjZGNz7ZXqrdnHf0XTbmP/Passworks?node-id=34%3A0">initial design</a>, created by Alyssa, to get a sense of the general structure of the project. However, I was afforded a lot of flexibility in the details of the implementation and what exactly to present. After looking through the Figma, I spent some time planning to figure out each stage of the various activities, and the basic layout and shared components each activity would need to use. From there, I started building up components and getting a small version of the app working. In this section, I’ll discuss some of the more significant design decisions I made, and my reasoning behind them.</p>
+
+<hr />
+
+<h3 id="the-lesson-framework">The Lesson Framework</h3>
+
+<p>Probably one of the biggest decisions during the building of the app was how I would store the lessons/activities in the app. As I was fleshing out some details in the activities, I noticed that each “slide” of a lesson would consist largely of the same elements, in particular, some descriptive text and some content on the phone (see poorly drawn example below).</p>
+
+<p><img src="/img/posts/passworks/layout.png" alt="sample text on a phone screen" class="post-img" /></p>
+
+<p>In addition, there were many instances where two different activities would be able to reuse previous components. For example, the first two activities both feature a password input and password generator. I realized that I could create a declarative framework, where each lesson is defined by an array of JavaScript objects. For example, the block of code below represents a single slide in a lesson:</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span>
+  <span class="c1">// ...</span>
+  <span class="p">{</span>
+    <span class="na">slide</span><span class="p">:</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nc">Typography</span><span class="p">&gt;</span>
+        Type a 4-digit password (or press Randomize to generate one
+        automatically), and press Submit!
+      <span class="p">&lt;/</span><span class="nc">Typography</span><span class="p">&gt;</span>
+    <span class="p">),</span>
+    <span class="na">input</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">inputNum</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="na">inputType</span><span class="p">:</span> <span class="dl">"</span><span class="s2">num</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">inputDesc</span><span class="p">:</span> <span class="dl">"</span><span class="s2">4 digits</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">inputLength</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="na">checkInput</span><span class="p">:</span> <span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="sr">/^</span><span class="se">\d{4}</span><span class="sr">$/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">str</span><span class="p">),</span>
+    <span class="na">defaultInput</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">getRandom</span><span class="p">(</span><span class="dl">"</span><span class="s2">0123456789</span><span class="dl">"</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="na">phoneContent</span><span class="p">:</span> <span class="nx">inputForm</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="c1">// ...</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<p>The slide looks like this when rendered:</p>
+
+<p><img src="/img/posts/passworks/example_slide.png" alt="rendered phone and game" class="post-img" /></p>
+
+<p>Using such a format allows the app to process the information in each slide of an activity, and use the information to decide what to show on the webpage. This framework also has the added benefit of making the lessons easily extensible, since additional lessons or lesson slides can be easily added by adding more objects to the list (rather than needing to write a bunch of actual code).</p>
+
+<p>The framework was built up very incrementally. When I first implemented the framework and the app only had a few core features, the lesson slide objects had a limited number of properties. For example, in <a href="https://github.com/uclaacm/passworks/blob/26330fc42bf3d2bc040076095d53c63f00791bd5/src/constants/lessons.js">this very initial version</a> of the app, only the <code class="language-plaintext highlighter-rouge">slide</code>, <code class="language-plaintext highlighter-rouge">input</code>, <code class="language-plaintext highlighter-rouge">usesInput</code>, <code class="language-plaintext highlighter-rouge">inputType</code>, and <code class="language-plaintext highlighter-rouge">inputLength</code> properties existed. As more activities were developed, and more requests made for features in activities, the number of possible keys and options grew, making the structures more complex.</p>
+
+<p>This incremental approach when coupled with the inherent complexity of the phone screen admittedly resulted in some less-than-perfect code, as I had to do some workarounds to get certain features working. <a href="https://github.com/uclaacm/passworks/blob/a2496efddccc0e11a9bf4e693fee5696bb96f70c/src/components/Main/Main.js#L208">This whole chunk of code</a> is responsible for rendering various different items on the mock phone screen in the app, and is not the prettiest to look at. This is largely because the phone screen component is generic and must be able to contain a wide variety of different components (the password guesser, chat messages, input forms, etc.), each with different required props. It’s possible that figuring out every aspect of the app before starting development would have made some code much cleaner, but a lot of the activities were being iterated on during development. Pre-planning the entire lesson framework might have then resulted in unnecessary complexity or dead code in the app by the app’s completion.</p>
+
+<p>You can check out the overall lesson structure <a href="https://github.com/uclaacm/passworks/blob/a2496efddccc0e11a9bf4e693fee5696bb96f70c/src/constants/lessons.js#L198">here</a>.</p>
+
+<hr />
+
+<h3 id="making-things-generic">Making Things Generic</h3>
+
+<p>If you checked out the lesson structure, you may have noticed that there were quite a few <code class="language-plaintext highlighter-rouge">Chat</code> components, which are rendered as mock text-message conversations on the phone screen like so:</p>
+
+<p><img src="/img/posts/passworks/chat_component.png" alt="mock imessage conversation" class="post-img" /></p>
+
+<p>However, it wasn’t always this way. Initially, only the final activity of Social Engineering was going to have the chat messages, so I hard-coded an array of messages for the <code class="language-plaintext highlighter-rouge">Chat</code> component to render. The chat bubbles turned out to be quite popular with our beta testers, who encouraged me to use it for the other lessons as well. So, I made the <code class="language-plaintext highlighter-rouge">Chat</code> component generic by allowing it to accept a list of chat messages as a prop. You can check out the commit where I did so <a href="https://github.com/uclaacm/passworks/commit/3fb37813787699898899d1baf62d44b1b6523bbb">here</a>.</p>
+
+<p>This process is also how I made a number of other components generic and re-usable in an incremental fashion. I first used a set of mock data to get a working version of the feature, and then extended the component to be generic and able to accept different sets of data. I feel that this approach of making specific cases work and then generalizing reflects good software engineering practices, as it speeds up development and makes it easier to see how a feature (like the <code class="language-plaintext highlighter-rouge">Chat</code> component) might fit into an overall project before writing a bunch of code to include it.</p>
+
+<hr />
+
+<h3 id="custom-vs-prebuilt">Custom vs. Prebuilt</h3>
+
+<p>There were several occasions during the app when I had to decide whether to use a prebuilt component or library, or create a custom component to accomplish something. On one hand, I wanted to use tools that were tailor-made for my requirements. At the same time, I wanted to avoid falling into the trap of trying to reinvent the wheel. I’ll give a couple examples of these decisions, and give some insight on how I made them.</p>
+
+<p>One example of a prebuilt component I used is <a href="https://github.com/glennreyes/react-countup"><code class="language-plaintext highlighter-rouge">react-countup</code></a>, which, in its most basic form, renders a simple animated counter to a number of your choice. It turns out that implementing such a component from scratch can be quite difficult, as there are a number of things to consider such as screen’s refresh rate and how to prevent <a href="https://developers.google.com/web/fundamentals/performance/rendering">jank</a>. In addition, the <code class="language-plaintext highlighter-rouge">react-countup</code> module turned out to be surprisingly flexible for a wide range of use cases, making it quite suitable for the app. I’ll discuss more about how I used the module <a href="#counting-up-to-strings">later in this post</a>, but here’s a quick preview of how it looks in the app:</p>
+
+<p><img src="/img/posts/passworks/countup_example.gif" alt="enumerating passwords with react-countup" class="post-img" /></p>
+
+<p>In other places, I chose not to use prebuilt components. For example, I decided not to go with a prebuilt router library for activity navigation. The router for the activities did not need to be very flexible, since the format of the activities was quite rigid (each activity having some number of slides). Existing router libraries are generic and overly powerful, so customizing them for my own use case would likely require some sort of middle layer anyway. As a result, I decided to write my own simple router.</p>
+
+<p>If you looked through the source code of the app, you might be wondering: “But wait a second, I looked at the <a href="https://github.com/uclaacm/passworks/blob/master/src/App.js"><code class="language-plaintext highlighter-rouge">App.js</code></a> file and React Router is used?” Initially, the app consisted only of the activities, but was later extended to include other sections like the “Most Common Passwords” and “Password Games”. We ended up needing to modify the app to use a prebuilt router in order to handle this increase in scope, so now we use React Router for the overall app, as well as a custom router for nagivating through the activities.</p>
+
+<hr />
+
+<h2 id="bugs-encountered">Bugs Encountered</h2>
+
+<p>While it’d be impossible for me to create a comprehensive list of every bug I encountered during development, here are a few notable or particularly interesting ones and how I solved them.</p>
+
+<h3 id="text-animations">Text Animations</h3>
+
+<p>I encountered some interesting behavior with the animated text messages, where the animation did not refresh if the user navigated to a new activity. So, if I was on the first activity and two messages had been animated on the screen, and then I navigated to the second activity, there would already be two messages on the screen. The desired behavior, of course, would be to have the animation start anew once I clicked to the second lesson.</p>
+
+<p>After some digging, I found out that the problem involves the way that React manipulates the <a href="https://css-tricks.com/dom/">DOM</a>, which is basically a representation of the content on the page. Essentially, React changes the DOM in order to change what is shown on the page, and this can be computationally expensive. For performance benefits, React will sometimes attempt to reuse components to avoid re-rendering content that doesn’t need to be re-rendered. However, since these reused components are not newly created, the browser does not know that it should animate them. To force React to remount the <code class="language-plaintext highlighter-rouge">Chat</code> component, I decided to leverage React’s <a href="https://kentcdodds.com/blog/understanding-reacts-key-prop/"><code class="language-plaintext highlighter-rouge">key</code> prop</a>, which is used to identify a component and control its reuse.</p>
+
+<p>Finally, to ensure a unique <code class="language-plaintext highlighter-rouge">key</code> for each <code class="language-plaintext highlighter-rouge">Chat</code> component, I adopted a singleton pattern:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">chatKey</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="kd">const</span> <span class="nx">getChatKey</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">chatKey</span> <span class="o">+=</span> <span class="mi">1</span>
+  <span class="k">return</span> <span class="nx">chatKey</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In each <code class="language-plaintext highlighter-rouge">Chat</code> component, I passed in <code class="language-plaintext highlighter-rouge">key={getChatKey()}</code> to generate a unique key for each copmonent. What this does is ensures that React does not reuse a previous <code class="language-plaintext highlighter-rouge">Chat</code> component, and instead creates and renders a new <code class="language-plaintext highlighter-rouge">Chat</code> component when the screen changes. As a result, the animation starts from the beginning each time we switch between activities.</p>
+
+<hr />
+
+<h3 id="react-countup-bug">react-countup Bug</h3>
+
+<p>I encountered a strange bug after deciding to print the counter’s output to the console (while debugging a different issue). I had set a 10 second delay for the counter to automatically start, and I discovered that the counter would start after waiting out this delay even if I navigated to the next slide, where the counter shouldn’t exist. It appeared that the <code class="language-plaintext highlighter-rouge">useCountUp</code> hook wasn’t unmounted properly when it should have.</p>
+
+<p>One workaround I tried out was setting the <code class="language-plaintext highlighter-rouge">delay</code> prop to be a really high number, effectively high enough that the countup wouldn’t start until after the user finished using the app and closed it.</p>
+
+<p>This bug and the workaround I implemented were quite unsettling, so I investigated the source code of the <code class="language-plaintext highlighter-rouge">useCountUp</code> hook that I was using. I found the following code snippet from <a href="https://github.com/RideReport/react-countup/blob/a8a505d073deef5cc6211dfaed5f963374e9285e/src/useCountUp.js">this file</a>:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">delay</span><span class="p">,</span> <span class="nx">onStart</span><span class="p">,</span> <span class="nx">onEnd</span><span class="p">,</span> <span class="nx">startOnMount</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">_props</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">startOnMount</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">timeout</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">onStart</span><span class="p">({</span> <span class="nx">pauseResume</span><span class="p">,</span> <span class="nx">reset</span><span class="p">,</span> <span class="nx">update</span> <span class="p">});</span>
+      <span class="nx">getCountUp</span><span class="p">().</span><span class="nx">start</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timeout</span><span class="p">);</span>
+        <span class="nx">onEnd</span><span class="p">({</span> <span class="nx">pauseResume</span><span class="p">,</span> <span class="nx">reset</span><span class="p">,</span> <span class="na">start</span><span class="p">:</span> <span class="nx">restart</span><span class="p">,</span> <span class="nx">update</span> <span class="p">});</span>
+      <span class="p">});</span>
+    <span class="p">},</span> <span class="nx">delay</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">reset</span><span class="p">;</span>
+<span class="p">},</span> <span class="p">[]);</span>
+</code></pre></div></div>
+
+<p>React’s <a href="https://reactjs.org/docs/hooks-effect.html">Effect Hook</a> provides a way to initiate operations with side effects in a component. In order for the hook to clean up resources when the component gets unmounted, the <code class="language-plaintext highlighter-rouge">useEffect</code> callback can optionally return a clean-up function. That’s exactly what happens here with the <code class="language-plaintext highlighter-rouge">return reset</code> statement, which would correctly delete a started counter upon unmount. However, note that in the <code class="language-plaintext highlighter-rouge">if</code>-block there is a <code class="language-plaintext highlighter-rouge">setTimeout()</code> that doesn’t get cleared in the cleanup section, which can cause the counter to start even if the component has been unmounted!</p>
+
+<p>Since having the counter automatically start after mounting was not necessary in this case, I simply <a href="https://github.com/uclaacm/passworks/blob/00cfbbd88302df15f46789c9e8e6edf46999469c/src/components/PasswordGuesser/GuesserAndTimer/GuesserAndTimer.js#L48">set the <code class="language-plaintext highlighter-rouge">startOnMount</code> prop to be <code class="language-plaintext highlighter-rouge">false</code></a>. This meant that <code class="language-plaintext highlighter-rouge">setTimeout</code> was never called, and thus wasn’t an issue any longer. However, this fix wouldn’t work for cases where starting on mount is desired.</p>
+
+<p>Fortunately, someone else caught the same bug and <a href="https://github.com/glennreyes/react-countup/pull/375">filed a PR</a> to fix the issue by clearing the timeout. One more commit was required to actually fix the bug (due to scope issues with the timeout reference), and can be seen <a href="https://github.com/glennreyes/react-countup/commit/94df4e775d65f7bb118a35af656e9eb3b3a29ff8#diff-0875b99271d5068886b72d77f0b9e812">here</a>.</p>
+
+<h2 id="components-vs-hooks">Components vs. Hooks</h2>
+
+<p>This is not so much a bug as it was something I noticed or learned throughout the development process, especially working with the <code class="language-plaintext highlighter-rouge">react-countup</code> module. Initially, I had a lot of difficulties implementing the timer portion of the password-guessing slide, since both of them used the component form of the <code class="language-plaintext highlighter-rouge">react-countup</code> module and I didn’t know how to connect them to the same start button. I believe a lot of this can be attributed to confusion with components and the fact that composing two CountUp components is non-trivial. I ended up switching from the component implementation of <code class="language-plaintext highlighter-rouge">CountUp</code> to the <code class="language-plaintext highlighter-rouge">useCountUp</code> hook, and things became much more simple.</p>
+
+<p><a href="https://github.com/uclaacm/passworks/commit/eaaf2527cae3cdb232a93335640a248e57f262a8">This commit</a> contains most of the work I had to do while transitioning from components to hooks, and provides a decent illustration of the gains from fully switching to hooks. In particular, compare the following code snippets: the first using the <code class="language-plaintext highlighter-rouge">CountUp</code> component and the second using the equivalent hook:</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="p">(</span>
+  <span class="p">&lt;</span><span class="nc">CountUp</span>
+    <span class="na">start</span><span class="p">=</span><span class="si">{</span><span class="mi">0</span><span class="si">}</span>
+    <span class="na">end</span><span class="p">=</span><span class="si">{</span><span class="mi">100</span><span class="si">}</span>
+  <span class="p">&gt;</span>
+    <span class="si">{</span><span class="p">({</span> <span class="na">countUpRef</span><span class="p">:</span> <span class="nx">ref1</span><span class="p">,</span> <span class="na">start</span><span class="p">:</span> <span class="nx">start1</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nc">CountUp</span>
+        <span class="na">start</span><span class="p">=</span><span class="si">{</span><span class="mi">0</span><span class="si">}</span>
+        <span class="na">end</span><span class="p">=</span><span class="si">{</span><span class="mi">100</span><span class="si">}</span>
+      <span class="p">&gt;</span>
+        <span class="si">{</span><span class="p">({</span> <span class="na">countUpRef</span><span class="p">:</span> <span class="nx">ref2</span><span class="p">,</span> <span class="na">start</span><span class="p">:</span> <span class="nx">start2</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">(</span>
+          <span class="p">&lt;</span><span class="nc">Box</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">span</span> <span class="na">ref</span><span class="p">=</span><span class="si">{</span><span class="nx">ref1</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nt">span</span> <span class="na">ref</span><span class="p">=</span><span class="si">{</span><span class="nx">ref2</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nc">Button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nx">start1</span><span class="p">();</span> <span class="nx">start2</span><span class="p">();</span> <span class="p">}</span><span class="si">}</span><span class="p">&gt;</span>Start<span class="p">&lt;/</span><span class="nc">Button</span><span class="p">&gt;</span>
+          <span class="p">&lt;/</span><span class="nc">Box</span><span class="p">&gt;</span>
+        <span class="p">)</span>
+      <span class="o">&lt;</span><span class="sr">/CountUp</span><span class="err">&gt;
+</span>    <span class="p">)</span><span class="si">}</span>
+  <span class="p">&lt;/</span><span class="nc">CountUp</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="na">countUp</span><span class="p">:</span> <span class="nx">countUp1</span><span class="p">,</span> <span class="na">start</span><span class="p">:</span> <span class="nx">start1</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useCountUp</span><span class="p">({</span> <span class="na">start</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="na">end</span><span class="p">:</span> <span class="mi">100</span> <span class="p">});</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="na">countUp</span><span class="p">:</span> <span class="nx">countUp2</span><span class="p">,</span> <span class="na">start</span><span class="p">:</span> <span class="nx">start2</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useCountUp</span><span class="p">({</span> <span class="na">start</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="na">end</span><span class="p">:</span> <span class="mi">100</span> <span class="p">});</span>
+<span class="k">return</span> <span class="p">(</span>
+  <span class="p">&lt;</span><span class="nc">Box</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">countUp1</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">countUp2</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nc">Button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nx">start1</span><span class="p">();</span> <span class="nx">start2</span><span class="p">();</span> <span class="p">}</span><span class="si">}</span><span class="p">&gt;</span>Start<span class="p">&lt;/</span><span class="nc">Button</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nc">Box</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>Some advantages of the hook approach compared to the component approach can be seen in these snippets:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;CountUp /&gt;</code> version is more verbose</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;CountUp /&gt;</code> version has unclear data flow: where do <code class="language-plaintext highlighter-rouge">countUpRef</code> and <code class="language-plaintext highlighter-rouge">start</code> come from?</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;CountUp /&gt;</code> version has greater nesting; <code class="language-plaintext highlighter-rouge">useCountUp</code> provides idiomatic straight-line code</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;CountUp /&gt;</code> version requires knowledge of advanced React features, like <a href="https://reactjs.org/docs/refs-and-the-dom.html">refs</a></li>
+  <li>The opaqueness of the <code class="language-plaintext highlighter-rouge">&lt;CountUp /&gt;</code> version leads to <a href="https://en.wikipedia.org/wiki/Cargo_cult_programming">cargo culting</a>. Certainly in my case, I did not fully understand how the component version worked, and the code I wrote was heavily based on samples provided by the module’s documentation.</li>
+</ul>
+
+<p>Overall, I had a much better experience working with hooks in this case, and I’ve gained an appreciation for their flexibility and how intuitive it is to use them.</p>
+
+<hr />
+
+<h2 id="some-more-fun-things">Some More Fun Things</h2>
+
+<p>Some aspects of this project were really fun to work on and figure out, so in this section I will discuss a few of those.</p>
+
+<hr />
+
+<h3 id="randomize-button">Randomize Button</h3>
+
+<p>For the first two activities, the user is able to input passwords of their own choice (within the limitations of the activity). However, they can also press the “Randomize” button to have the input be automatically populated by a valid password for the section.</p>
+
+<p>I implemented this button using a few utility functions, which can be found <a href="https://github.com/uclaacm/passworks/blob/a2496efddccc0e11a9bf4e693fee5696bb96f70c/src/constants/lessons.js#L153">here</a>. I implemented a simple <code class="language-plaintext highlighter-rouge">randomInt(min, max)</code> function to randomly pick the an integer inclusively between <code class="language-plaintext highlighter-rouge">min</code> and <code class="language-plaintext highlighter-rouge">max</code>. I also implemented the <code class="language-plaintext highlighter-rouge">getRandom(str, n)</code> function to randomly select <code class="language-plaintext highlighter-rouge">n</code> of characters from an alphabet consisting of the letters in <code class="language-plaintext highlighter-rouge">str</code>. Finally, I implemented a <code class="language-plaintext highlighter-rouge">shuffleString(str)</code> function to shuffle a string of characters.</p>
+
+<p>The most interesting case I used these functions for was the mixed-case password. I first randomly picked the number of uppercase characters, then generated the appropriate-length strings of lowercase characters and uppercase characters, and finally combined and shuffled them using <code class="language-plaintext highlighter-rouge">shuffleString</code>.</p>
+
+<p>Though the algorithms are not the most complex, they were fun for me to implement and test!</p>
+
+<hr />
+
+<h3 id="regular-expressions">Regular Expressions</h3>
+
+<p>I used regular expressions to validate user inputs by writing callbacks that tested the user’s input against hard-coded regular expressions. They weren’t particularly advanced, but it was a reminder of how cool and powerful regular expressions can be (and provided me some much-needed practice).</p>
+
+<hr />
+
+<h3 id="counting-up-to-strings">Counting Up to Strings</h3>
+
+<p>As previously promised, I’ll discuss how I took advantage of the <code class="language-plaintext highlighter-rouge">react-countup</code> module’s flexibility. While it was relatively straightforward to implement a brute-force password generator for numbers by using this module, I needed some way to use the module to generate strings in a similar fashion. A look into the API of the <code class="language-plaintext highlighter-rouge">react-countup</code> module revealed a <a href="https://www.npmjs.com/package/react-countup#formattingfn-value-number--string"><code class="language-plaintext highlighter-rouge">formattingFn</code> prop</a>, which accepts a function that accepts a number and returns a string.</p>
+
+<p>I wanted to be able to use the <code class="language-plaintext highlighter-rouge">react-countup</code> module to display the password generation for strings of letters. Thus, I needed a way to convert a user’s input string of letters to an integer value, something that the <code class="language-plaintext highlighter-rouge">useCountUp</code> hook could use as an end value. I also needed a way to convert the number output back to a string of letters for the user to see.</p>
+
+<p>I came up with the following utility functions, the source file of which you can <a href="https://github.com/uclaacm/passworks/blob/master/src/util/password.js">see here</a>.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">toLetters</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="nx">alphabet</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">mod</span> <span class="o">=</span> <span class="nx">num</span> <span class="o">%</span> <span class="nx">alphabet</span><span class="p">.</span><span class="nx">length</span>
+  <span class="kd">const</span> <span class="nx">pow</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">num</span> <span class="o">/</span> <span class="nx">alphabet</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">out</span> <span class="o">=</span> <span class="nx">alphabet</span><span class="p">[</span><span class="nx">mod</span><span class="p">]</span>
+  <span class="k">return</span> <span class="nx">pow</span> <span class="p">?</span> <span class="nx">toLetters</span><span class="p">(</span><span class="nx">pow</span><span class="p">,</span> <span class="nx">alphabet</span><span class="p">)</span> <span class="o">+</span> <span class="nx">out</span> <span class="p">:</span> <span class="nx">out</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">fromLetters</span><span class="p">(</span><span class="nx">str</span><span class="p">,</span> <span class="nx">alphabet</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">const</span> <span class="nx">out</span> <span class="o">=</span> <span class="nx">str</span><span class="p">[</span><span class="nx">str</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+  <span class="kd">const</span> <span class="nx">pow</span> <span class="o">=</span> <span class="nx">fromLetters</span><span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="nx">alphabet</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">mod</span> <span class="o">=</span> <span class="nx">alphabet</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">out</span><span class="p">)</span>
+  <span class="k">return</span> <span class="nx">pow</span> <span class="o">*</span> <span class="nx">alphabet</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="nx">mod</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>These functions convert between numbers and strings based on a particular alphabet, which dictates the character set available. They implement a special case of <a href="https://en.wikipedia.org/wiki/Radix">base conversion</a>, but rather than using 0–9 (base 10), they use a–z (base 26) or any ordered set of characters.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">toLetters</code> function converts a number to the corresponding string. It computes the modulus as well as the quotient of the input number with the alphabet length. The modulus is used in order to obtain the current letter, and the quotient is decremented before being used in a recursive call to compute the rest of the string. The <code class="language-plaintext highlighter-rouge">fromLetters</code> function converts a string to the corresponding numeric value. It recursively processes each character starting from the last one in the string, and performs the reverse operations done in <code class="language-plaintext highlighter-rouge">toLetters</code>.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fromLetters</span><span class="p">(</span><span class="dl">"</span><span class="s2">bb</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">abc</span><span class="dl">"</span><span class="p">)</span>
+<span class="nx">toLetters</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="dl">"</span><span class="s2">abc</span><span class="dl">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>An interesting thing about this algorithm is that all strings including only the first character in the alphabet are mapped to 0 when converted to numbers. The reason behind this is that the first character is treated as a padding character. In the app, the users are required to input a 6-character password consisting of only a subset of letters from the alphabet. Count up from the 6-letter password “aaaaaa” is thus analogous to counting up from “000000” in the numeric case.</p>
+
+<p>Below is a list of entries that show the conversion between numbers and letters for the alphabet consisting of characters a–z:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   0 "aaaaaa"     26 "aaaaba"     650 "aaaaza"
+   1 "aaaaab"     27 "aaaabb"         ...
+   2 "aaaaac"         ...         675 "aaaazz"
+      ...         51 "aaaabz"     676 "aaabaa"
+  25 "aaaaaz"         ...             ...
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="final-thoughts">Final Thoughts</h2>
+
+<p>Overall I had a great experience and got to experiment with a lot of cool new things. Though this was a small app, I was able to experience a lot of things that happen in the process of software engineering:</p>
+<ul>
+  <li>how changes in user requirements can lead to changes in technologies used</li>
+  <li>how developing incrementally increases <a href="https://en.wikipedia.org/wiki/Velocity_(software_development)">velocity</a></li>
+  <li>working with and debugging previously unfamiliar technologies</li>
+</ul>
+
+<p>I also want to give a huge shout out to <a href="https://undraw.co/">unDraw</a>, which was the source for all the beautiful visuals in the app.</p>
+
+<p>If you made it all the way to the end of this post, thank you for bearing with me. I hope you enjoyed, and please reach out to me if you have any questions or comments! :)</p>
+
+    </div>
+</article>
+
+<hr class="divider" />
+<div class="post-author-grid">
+    <h2 class="title" id="authors">Author</h2>
+
+    
+        
+        
+        
+        
+        
+        <div class="grid-row">
+    <div class="grid-col">
+        <img
+            class="post-author-img"
+            src="
+            
+                /img/team/jliu.jpg
+            
+        "
+            alt="photo of 
+            Jamie Liu
+        "
+        />
+    </div>
+    <div class="grid-col">
+        <div class="post-author-info">
+            <h3 class="no-margin title">
+                <a class="tla-link" href="
+            /team/jliu
+        ">
+                    
+            Jamie Liu
+        
+                </a>
+            </h3>
+            <p class="no-margin">
+                
+            Lead Developer
+            
+        
+            </p>
+        </div>
+    </div>
+</div>
+
+    
+
+</div>
+<hr class="divider" />
+<div class="text-center title post-want-more">
+    want more? here are some related posts:
+
+<div class="text-center title post-recommendations post-recommend-container">
+     <!--Iterations may change if a recommendation is skipped due to being the same-->
+    
+        
+        
+        
+        <div class="post-recommend-card">
+            <div><a class="tla-link" href="/blog/dev/2020/10/13/ingredients-of-cipher-salad/">Ingredients of "Cipher Salad"</a></div>
+            <div class="post-recommend-info">Rachel, Leo, Janis, and Lisha on Oct 13, 2020</div>
+        </div>
+    
+         <!--Skip the current page so its not recommended-->
+            
+            
+        
+        
+        
+        <div class="post-recommend-card">
+            <div><a class="tla-link" href="/blog/dev/2020/09/19/how-we-made-getting-mean-about-error/">How We Made "Getting Mean About Error"</a></div>
+            <div class="post-recommend-info">Miles and Michelle on Sep 19, 2020</div>
+        </div>
+    
+        
+        
+        
+        <div class="post-recommend-card">
+            <div><a class="tla-link" href="/blog/dev/2020/09/18/welcome-to-the-blog/">Welcome to Our Blog!</a></div>
+            <div class="post-recommend-info">Matt and Leo on Sep 18, 2020</div>
+        </div>
+    
+    
+</div>
+or <a class="tla-link" href="/blog">binge read the whole blog here</a>
+</div> 
+
+      
+    </div><footer class="footer">
+    <div class="container container-restricted">
+        <div class="footer-row">
+            <div class="footer-fullheight-col">
+                <div>
+                    <h2 class="footer-title">ACM Teach LA</h2>
+                    <ul class="footer-nav">
+                        <li>
+                            <a href="mailto:acmteachla@gmail.com">
+                                <span class="fa fa-fw fa-envelope"></span> acmteachla@gmail.com
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/acmteachla/" target="_blank" rel="noopener noreferrer">
+                                <span class="fab fa-fw fa-facebook"></span> ACM Teach LA
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/uclaacm" target="_blank" rel="noopener noreferrer">
+                                <span class="fab fa-fw fa-github"></span> uclaacm
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/company/acm-teach-la-acm-ucla" target="_blank" rel="noopener noreferrer">
+                                <span class="fab fa-fw fa-linkedin"></span> ACM Teach LA
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <a class="footer-link" href="https://www.netlify.com" target="_blank" rel="noopener noreferrer">
+                    <img src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Deploys by Netlify" />
+                </a>
+            </div>
+            <div>
+                <h3 class="footer-subtitle">what we do</h3>
+                <ul class="footer-nav">
+                    <li>
+                        <a href="/classes">classes</a>
+                    </li>
+                    <li>
+                        <a href="/dev">dev</a>
+                    </li>
+                    <li>
+                        <a href="https://editor.uclaacm.com" target="_blank" rel="noopener noreferrer">editor</a>
+                    </li>
+                    <li>
+                        <a href="/resources">resources</a>
+                    </li>
+                </ul>
+                <h3 class="footer-subtitle">events</h3>
+                <ul class="footer-nav text-1x">
+                    <li>
+                        <a href="/citylab-cyber">Cyber Day with CityLab</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="text-desktop-right">
+                <h3 class="footer-subtitle">
+                    who we are
+                </h3>
+                <ul class="footer-nav">
+                    <li>
+                        <a href="/about">about</a>
+                    </li>
+                    <li>
+                        <a href="/blog">blog</a>
+                    </li>
+                    <li>
+                        <a href="/reports">reports</a>
+                    </li>
+                    <li>
+                        <a href="/team">team</a>
+                    </li>
+                </ul>
+                <h3 class="footer-subtitle">
+                    internal
+                </h3>
+                <ul class="footer-nav">
+                    <li>
+                        <a href="/docs">docs</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <p class="text-center">
+            &copy; ACM @ UCLA 2019-* // made with <span class="fa fa-heart animated-heartbeat" style="color:tomato" aria-label="animated heartbeat"></span> and <a class="footer-link" href="https://github.com/uclaacm/teach-la-website" target="_blank" rel="noopener noreferrer"><span class="fab fa-github" aria-label="GitHub Logo & Repository"></span></a>
+            <br>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>
